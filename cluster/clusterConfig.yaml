@@ -2,33 +2,17 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: eks-reproduce
+  name: eks-reproduce-v133
   region: us-east-1
-  version: "1.34"
+  version: "1.33"
 
 nodeGroups:
-  - name: kernel-6-1-m5-4xlarge
+  - name: kernel-6-1-m6i-8xlarge
     amiFamily: Bottlerocket
     # bottlerocket-aws-k8s-1.32-x86_64-v1.44.0-244cd3a5 (Kernel 6.1.144)
     ami: ami-0026d8294bcd292ca
-    desiredCapacity: 1
-    instanceType: m5.4xlarge
-    volumeSize: 100
-    volumeType: gp3
-    privateNetworking: true
-    iam:
-      attachPolicyARNs:
-      - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly
-      - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
-      - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-      - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
-
-  - name: kernel-6-12-m5-4xlarge
-    amiFamily: Bottlerocket
-    # bottlerocket-aws-k8s-1.34-x86_64-v1.49.0-713f44ce (Kernel 6.12.46)
-    ami: ami-07e4e828a19159636
-    desiredCapacity: 1
-    instanceType: m5.4xlarge
+    desiredCapacity: 4
+    instanceType: m6i.8xlarge
     volumeSize: 100
     volumeType: gp3
     privateNetworking: true
@@ -42,12 +26,12 @@ nodeGroups:
 addons:
   - name: kube-proxy
     configurationValues: '{"mode": "nftables"}'
-    version: 'v1.32.6-eksbuild.12'
+    version: 'v1.32.0-eksbuild.2'
   - name: vpc-cni
-    configurationValues: '{"env": {"ENABLE_PREFIX_DELEGATION": "true","WARM_PREFIX_TARGET": "50"}}' # to ensure we could scaling fast.
-    version: 'v1.20.3-eksbuild.1'
+    configurationValues: '{"env": {"ENABLE_POD_ENI":"true","MINIMUM_IP_TARGET":"2","WARM_IP_TARGET":"1","ENABLE_BANDWIDTH_PLUGIN":"true","AWS_VPC_K8S_CNI_EXTERNALSNAT":"true"},"init":{"env":{"DISABLE_TCP_EARLY_DEMUX":"true"}},"enableNetworkPolicy":"true"}'
+    version: 'v1.19.2-eksbuild.1'
   - name: coredns
-    configurationValues: '{"resources":{"requests":{"cpu":"1000m","memory":"1000Mi"},"limits":{"memory":"1200Mi"}},"autoScaling":{"enabled":true}}' # to ensure coredns would not crash.
-    version: 'v1.12.4-eksbuild.1'
+    configurationValues: '{"resources":{"requests":{"cpu":"1000m","memory":"1000Mi"},"limits":{"memory":"1200Mi"}},"autoScaling":{"enabled":true}}'
+    version: 'v1.11.4-eksbuild.2'
   - name: metrics-server
-    version: 'v0.8.0-eksbuild.2'
+    version: 'v0.8.0-eksbuild.3'

@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-SCALES=($(seq 100 100 8000))
+SCALES=($(seq 100 100 3500))
 
 # Create namespace
 kubectl create namespace debug \
@@ -14,9 +14,9 @@ kubectl create namespace debug \
 kubectl --namespace=debug create deployment nginx-deployment \
   --image=nginx:stable-alpine \
   --port=80 \
-  --replicas=1 \
+  --replicas=5 \
   --dry-run=client -o yaml | \
-  kubectl apply --force-conflicts -f -
+  kubectl apply --force-conflicts --server-side -f -
 
 # Patch deployment to disable service links
 kubectl patch deployment nginx-deployment -n debug -p '{"spec":{"template":{"spec":{"enableServiceLinks":false}}}}'
