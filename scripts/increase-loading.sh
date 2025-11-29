@@ -4,11 +4,14 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-TARGET_REPLICAS=30
+TARGET_REPLICAS=50
 
 for replicas in $(seq 5 5 $TARGET_REPLICAS); do
-  echo "Waiting 60 seconds before scaling setting replica count to $replicas..."
-  sleep 60
+  CURRENT_REPLICA=$(kubectl --namespace debug get deployment nginx-deployment -o json | jq -r .spec.replicas)
+  if [[ $CURRENT_REPLICA -lt $replicas ]]; then
+    kubectl --namespace=debug scale deployment nginx-deployment --replicas $replicas
 
-  kubectl --namespace=debug scale deployment nginx-deployment --replicas $replicas
+    echo "Waiting 30 seconds after scaling setting replica count to $replicas..."
+    sleep 30
+  fi
 done

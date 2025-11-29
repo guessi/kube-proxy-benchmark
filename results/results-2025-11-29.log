@@ -1,0 +1,45 @@
+# elapsed less than 1m will not be listed
+
+kernel-6.1.144, m6i.8xlarge
+I1129 08:24:33.332403       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=250011
+I1129 08:37:39.986065       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="13m15.34210662s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 08:51:49.351686       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=246544
+I1129 08:54:52.614808       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="3m24.46250689s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 08:55:24.752774       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=250011
+I1129 09:06:53.640529       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="12m1.025666328s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:07:19.914080       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=269672
+I1129 09:14:54.520398       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="8m0.879795547s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:15:22.919204       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=259517
+I1129 09:25:56.677907       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="11m2.157428951s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:26:17.426125       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=253618
+I1129 09:26:19.110368       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv6" elapsed="9m26.251868724s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:38:19.548050       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=316318
+I1129 09:45:48.723227       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="7m56.065323132s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:46:19.898079       1 proxier.go:1840] "Reloading service nftables data" ipFamily="IPv4" numServices=5006 numEndpoints=284890
+I1129 09:53:54.136792       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="8m5.41349297s"
+
+kernel-6.1.144, m6i.8xlarge
+I1129 09:53:55.027651       1 proxier.go:1231] "Deleting stale nftables chains" ipFamily="IPv4" numChains=142642
+I1129 10:05:51.761740       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="11m57.624883683s"
+
+kernel-6.12.55, m6i.8xlarge
+I1129 08:26:30.747856       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="2m13.763323781s"
+I1129 08:50:20.799683       1 proxier.go:1199] "Syncing nftables rules" ipFamily="IPv4" fullSync=false
+
+kernel-6.12.55, m6i.8xlarge
+I1129 09:28:48.774320       1 proxier.go:1193] "SyncProxyRules complete" ipFamily="IPv4" elapsed="2m12.955796557s"
+I1129 09:28:49.250671       1 proxier.go:1199] "Syncing nftables rules" ipFamily="IPv4" fullSync=false

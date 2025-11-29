@@ -1,0 +1,1893 @@
+[Sat Nov 29 10:00:26 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 335s! [nft:257620]
+[Sat Nov 29 10:00:26 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:00:26 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:00:26 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:00:26 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:00:26 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:00:26 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000287
+[Sat Nov 29 10:00:26 2025] RAX: ffff9d0cd6e65b00 RBX: ffff9d0ed5f0f000 RCX: 0000000000000003
+[Sat Nov 29 10:00:26 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:00:26 2025] RBP: ffff9d0d186535c0 R08: ffff9d0ed5f0f010 R09: 0000000000000010
+[Sat Nov 29 10:00:26 2025] R10: 0000000000969d78 R11: ffff9d0df52f4d00 R12: 0000000000000001
+[Sat Nov 29 10:00:26 2025] R13: 0000000000000010 R14: ffff9d0ed5f0f010 R15: ffffffff91bce880
+[Sat Nov 29 10:00:26 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:00:26 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:00:26 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:00:26 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:00:26 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:00:26 2025] PKRU: 55555554
+[Sat Nov 29 10:00:26 2025] Call Trace:
+[Sat Nov 29 10:00:26 2025]  <TASK>
+[Sat Nov 29 10:00:26 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:00:26 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:00:26 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:00:26 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:00:26 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:00:26 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:00:26 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:00:26 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:00:26 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:00:26 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:00:26 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:00:26 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:00:26 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:00:26 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:00:26 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:00:26 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:00:26 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:00:26 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:00:26 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:00:26 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:00:26 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:00:26 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:00:26 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:00:26 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:00:26 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:00:26 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:00:26 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:00:26 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:00:26 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:00:26 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:00:26 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:00:26 2025]  </TASK>
+
+
+[Sat Nov 29 10:00:54 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 361s! [nft:257620]
+[Sat Nov 29 10:00:54 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:00:54 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:00:54 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:00:54 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:00:54 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:00:54 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000283
+[Sat Nov 29 10:00:54 2025] RAX: ffff9d0cb1802c80 RBX: ffff9d0dd2754800 RCX: 0000000000000003
+[Sat Nov 29 10:00:54 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:00:54 2025] RBP: ffff9d0d186535c0 R08: ffff9d0dd2754810 R09: 0000000000000010
+[Sat Nov 29 10:00:54 2025] R10: 000000000096db18 R11: ffff9d0cb375ea00 R12: 0000000000000001
+[Sat Nov 29 10:00:54 2025] R13: 0000000000000010 R14: ffff9d0dd2754810 R15: ffffffff91bce880
+[Sat Nov 29 10:00:54 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:00:54 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:00:54 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:00:54 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:00:54 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:00:54 2025] PKRU: 55555554
+[Sat Nov 29 10:00:54 2025] Call Trace:
+[Sat Nov 29 10:00:54 2025]  <TASK>
+[Sat Nov 29 10:00:54 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:00:54 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:00:54 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:00:54 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:00:54 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:00:54 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:00:54 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:00:54 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:00:54 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:00:54 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:00:54 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:00:54 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:00:54 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:00:54 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:00:54 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:00:54 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:00:54 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:00:54 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:00:54 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:00:54 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:00:54 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:00:54 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:00:54 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:00:54 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:00:54 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:00:54 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:00:54 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:00:54 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:00:54 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:00:54 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:00:54 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:00:54 2025]  </TASK>
+
+
+[Sat Nov 29 10:01:22 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 387s! [nft:257620]
+[Sat Nov 29 10:01:22 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:01:22 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:01:22 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:01:22 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:01:22 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:01:22 2025] RSP: 0018:ffffb261428c7880 EFLAGS: 00000293
+[Sat Nov 29 10:01:22 2025] RAX: ffff9d0f1004b480 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:01:22 2025] RDX: ffff9d0ed50ac000 RSI: 00000000000022ec RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:01:22 2025] RBP: ffffb26168e79f24 R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:01:22 2025] R10: 00000000009716e8 R11: ffff9d0e004a1200 R12: 0000000000000001
+[Sat Nov 29 10:01:22 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:01:22 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:01:22 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:01:22 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:01:22 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:01:22 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:01:22 2025] PKRU: 55555554
+[Sat Nov 29 10:01:22 2025] Call Trace:
+[Sat Nov 29 10:01:22 2025]  <TASK>
+[Sat Nov 29 10:01:22 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:01:22 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:01:22 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:01:22 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:01:22 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:01:22 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:01:22 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:01:22 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:01:22 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:01:22 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:01:22 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:01:22 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:01:22 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:01:22 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:01:22 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:01:22 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:01:22 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:01:22 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:01:22 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:01:22 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:01:22 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:01:22 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:01:22 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:01:22 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:01:22 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:01:22 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:01:22 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:01:22 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:01:22 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:01:22 2025]  </TASK>
+
+
+[Sat Nov 29 10:01:50 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 413s! [nft:257620]
+[Sat Nov 29 10:01:50 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:01:50 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:01:50 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:01:50 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:01:50 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:01:50 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000287
+[Sat Nov 29 10:01:50 2025] RAX: ffff9d0cb636ba00 RBX: ffff9d0e261d3000 RCX: 000000000000000c
+[Sat Nov 29 10:01:50 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:01:50 2025] RBP: ffff9d0d186535c0 R08: ffff9d0e261d3010 R09: 0000000000000010
+[Sat Nov 29 10:01:50 2025] R10: 0000000000975074 R11: ffff9d0d3f63de00 R12: 0000000000000001
+[Sat Nov 29 10:01:50 2025] R13: 0000000000000010 R14: ffff9d0e261d3010 R15: ffffffff91bce880
+[Sat Nov 29 10:01:50 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:01:50 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:01:50 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:01:50 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:01:50 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:01:50 2025] PKRU: 55555554
+[Sat Nov 29 10:01:50 2025] Call Trace:
+[Sat Nov 29 10:01:50 2025]  <TASK>
+[Sat Nov 29 10:01:50 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:01:50 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:01:50 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:01:50 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:01:50 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:01:50 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:01:50 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:01:50 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:01:50 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:01:50 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:01:50 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:01:50 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:01:50 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:01:50 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:01:50 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:01:50 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:01:50 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:01:50 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:01:50 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:01:50 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:01:50 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:01:50 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:01:50 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:01:50 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:01:50 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:01:50 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:01:50 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:01:50 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:01:50 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:01:50 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:01:50 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:01:50 2025]  </TASK>
+
+
+[Sat Nov 29 10:02:18 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 439s! [nft:257620]
+[Sat Nov 29 10:02:18 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:02:18 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:02:18 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:02:18 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:02:18 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:02:18 2025] RSP: 0018:ffffb261428c7880 EFLAGS: 00000293
+[Sat Nov 29 10:02:18 2025] RAX: ffff9d0c8aedff80 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:02:18 2025] RDX: ffff9d0ed50ac000 RSI: 00000000000023e6 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:02:18 2025] RBP: ffffb261699db854 R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:02:18 2025] R10: 0000000000978830 R11: ffff9d0e18433c00 R12: 0000000000000001
+[Sat Nov 29 10:02:18 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:02:18 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:02:18 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:02:18 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:02:18 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:02:18 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:02:18 2025] PKRU: 55555554
+[Sat Nov 29 10:02:18 2025] Call Trace:
+[Sat Nov 29 10:02:18 2025]  <TASK>
+[Sat Nov 29 10:02:18 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:02:18 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:02:18 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:02:18 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:02:18 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:02:18 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:02:18 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:02:18 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:02:18 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:02:18 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:02:18 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:02:18 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:02:18 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:02:18 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:02:18 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:02:18 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:02:18 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:02:18 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:02:18 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:02:18 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:02:18 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:02:18 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:02:18 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:02:18 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:02:18 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:02:18 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:02:18 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:02:18 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:02:18 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:02:18 2025]  </TASK>
+
+
+[Sat Nov 29 10:02:46 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 465s! [nft:257620]
+[Sat Nov 29 10:02:46 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:02:46 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:02:46 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:02:46 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:02:46 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:02:46 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000206
+[Sat Nov 29 10:02:46 2025] RAX: ffff9d0d85126000 RBX: ffff9d0e3454a800 RCX: 000000000000000c
+[Sat Nov 29 10:02:46 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:02:46 2025] RBP: ffff9d0d186535c0 R08: ffff9d0e3454a810 R09: 0000000000000010
+[Sat Nov 29 10:02:46 2025] R10: 000000000097bd34 R11: ffff9d0d10ccce00 R12: 0000000000000001
+[Sat Nov 29 10:02:46 2025] R13: 0000000000000010 R14: ffff9d0e3454a810 R15: ffffffff91bce880
+[Sat Nov 29 10:02:46 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:02:46 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:02:46 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:02:46 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:02:46 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:02:46 2025] PKRU: 55555554
+[Sat Nov 29 10:02:46 2025] Call Trace:
+[Sat Nov 29 10:02:46 2025]  <TASK>
+[Sat Nov 29 10:02:46 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:02:46 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:02:46 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:02:46 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:02:46 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:02:46 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:02:46 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:02:46 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:02:46 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:02:46 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:02:46 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:02:46 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:02:46 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:02:46 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:02:46 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:02:46 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:02:46 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:02:46 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:02:46 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:02:46 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:02:46 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:02:46 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:02:46 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:02:46 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:02:46 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:02:46 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:02:46 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:02:46 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:02:46 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:02:46 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:02:46 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:02:46 2025]  </TASK>
+
+
+[Sat Nov 29 10:03:14 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 492s! [nft:257620]
+[Sat Nov 29 10:03:14 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:03:14 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:03:14 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:03:14 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:03:14 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:03:14 2025] RSP: 0018:ffffb261428c78e0 EFLAGS: 00000293
+[Sat Nov 29 10:03:14 2025] RAX: ffff9d0e790f4100 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:03:14 2025] RDX: ffff9d0ed50ac000 RSI: 00000000000024cf RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:03:14 2025] RBP: ffffb2616a475a28 R08: 0000000000000034 R09: 0000000000000000
+[Sat Nov 29 10:03:14 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:03:14 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:03:14 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:03:14 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:03:14 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:03:14 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:03:14 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:03:14 2025] PKRU: 55555554
+[Sat Nov 29 10:03:14 2025] Call Trace:
+[Sat Nov 29 10:03:14 2025]  <TASK>
+[Sat Nov 29 10:03:14 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:03:14 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:03:14 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:03:14 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:03:14 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:03:14 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:03:14 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:03:14 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:03:14 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:03:14 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:03:14 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:03:14 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:03:14 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:03:14 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:03:14 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:03:14 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:03:14 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:03:14 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:03:14 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:03:14 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:03:14 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:03:14 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:03:14 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:03:14 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:03:14 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:03:14 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:03:14 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:03:14 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:03:14 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:03:14 2025]  </TASK>
+
+
+[Sat Nov 29 10:03:42 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 518s! [nft:257620]
+[Sat Nov 29 10:03:42 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:03:42 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:03:42 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:03:42 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:03:42 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:03:42 2025] RSP: 0018:ffffb261428c78e0 EFLAGS: 00000293
+[Sat Nov 29 10:03:42 2025] RAX: ffff9d0e90b7d600 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:03:42 2025] RDX: ffff9d0ed50ac000 RSI: 0000000000002541 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:03:42 2025] RBP: ffffb2616a9a6398 R08: 0000000000000033 R09: 0000000000000000
+[Sat Nov 29 10:03:42 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:03:42 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:03:42 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:03:42 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:03:42 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:03:42 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:03:42 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:03:42 2025] PKRU: 55555554
+[Sat Nov 29 10:03:42 2025] Call Trace:
+[Sat Nov 29 10:03:42 2025]  <TASK>
+[Sat Nov 29 10:03:42 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:03:42 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:03:42 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:03:42 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:03:42 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:03:42 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:03:42 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:03:42 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:03:42 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:03:42 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:03:42 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:03:42 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:03:42 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:03:42 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:03:42 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:03:42 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:03:42 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:03:42 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:03:42 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:03:42 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:03:42 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:03:42 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:03:42 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:03:42 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:03:42 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:03:42 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:03:42 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:03:42 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:03:42 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:03:42 2025]  </TASK>
+
+
+[Sat Nov 29 10:04:10 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 544s! [nft:257620]
+[Sat Nov 29 10:04:10 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:04:10 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:04:10 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:04:10 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:04:10 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:04:10 2025] RSP: 0018:ffffb261428c78e0 EFLAGS: 00000297
+[Sat Nov 29 10:04:10 2025] RAX: ffff9d0ef8a6d880 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:04:10 2025] RDX: ffff9d0ed50ac000 RSI: 00000000000025b0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:04:10 2025] RBP: ffffb2616aeb3da0 R08: 0000000000000033 R09: 0000000000000000
+[Sat Nov 29 10:04:10 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:04:10 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:04:10 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:04:10 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:04:10 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:04:10 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:04:10 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:04:10 2025] PKRU: 55555554
+[Sat Nov 29 10:04:10 2025] Call Trace:
+[Sat Nov 29 10:04:10 2025]  <TASK>
+[Sat Nov 29 10:04:10 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:04:10 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:04:10 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:04:10 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:04:10 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:04:10 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:04:10 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:04:10 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:04:10 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:04:10 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:04:10 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:04:10 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:04:10 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:04:10 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:04:10 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:04:10 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:04:10 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:04:10 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:04:10 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:04:10 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:04:10 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:04:10 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:04:10 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:04:10 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:04:10 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:04:10 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:04:10 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:04:10 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:04:10 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:04:10 2025]  </TASK>
+
+
+[Sat Nov 29 10:04:38 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 570s! [nft:257620]
+[Sat Nov 29 10:04:38 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:04:38 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:04:38 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:04:38 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:04:38 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:04:38 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000206
+[Sat Nov 29 10:04:38 2025] RAX: ffff9d0f8f52b500 RBX: ffff9d0db29a3800 RCX: 0000000000000008
+[Sat Nov 29 10:04:38 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:04:38 2025] RBP: ffff9d0d186535c0 R08: ffff9d0db29a3810 R09: 0000000000000010
+[Sat Nov 29 10:04:38 2025] R10: 00000000009888a7 R11: ffff9d0d2ee04580 R12: 0000000000000001
+[Sat Nov 29 10:04:38 2025] R13: 0000000000000010 R14: ffff9d0db29a3810 R15: ffffffff91bce880
+[Sat Nov 29 10:04:38 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:04:38 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:04:38 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:04:38 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:04:38 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:04:38 2025] PKRU: 55555554
+[Sat Nov 29 10:04:38 2025] Call Trace:
+[Sat Nov 29 10:04:38 2025]  <TASK>
+[Sat Nov 29 10:04:38 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:04:38 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:04:38 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:04:38 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:04:38 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:04:38 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:04:38 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:04:38 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:04:38 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:04:38 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:04:38 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:04:38 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:04:38 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:04:38 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:04:38 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:04:38 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:04:38 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:04:38 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:04:38 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:04:38 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:04:38 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:04:38 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:04:38 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:04:38 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:04:38 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:04:38 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:04:38 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:04:38 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:04:38 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:04:38 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:04:38 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:04:38 2025]  </TASK>
+
+
+[Sat Nov 29 10:05:06 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 596s! [nft:257620]
+[Sat Nov 29 10:05:06 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:05:06 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:05:06 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:05:06 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:05:06 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:05:06 2025] RSP: 0018:ffffb261428c7880 EFLAGS: 00000206
+[Sat Nov 29 10:05:06 2025] RAX: ffff9d0e359ebe00 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:05:06 2025] RDX: ffff9d0ed50ac000 RSI: 0000000000002687 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:05:06 2025] RBP: ffffb2616b87edcc R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:05:06 2025] R10: 000000000098b923 R11: ffff9d0e35061400 R12: 0000000000000001
+[Sat Nov 29 10:05:06 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:05:06 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:05:06 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:05:06 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:05:06 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:05:06 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:05:06 2025] PKRU: 55555554
+[Sat Nov 29 10:05:06 2025] Call Trace:
+[Sat Nov 29 10:05:06 2025]  <TASK>
+[Sat Nov 29 10:05:06 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:05:06 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:05:06 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:05:06 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:05:06 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:05:06 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:05:06 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:05:06 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:05:06 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:05:06 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:05:06 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:05:06 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:05:06 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:05:06 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:05:06 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:05:06 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:05:06 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:05:06 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:05:06 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:05:06 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:05:06 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:05:06 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:05:06 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:05:06 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:05:06 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:05:06 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:05:06 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:05:06 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:05:06 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:05:06 2025]  </TASK>
+
+
+[Sat Nov 29 10:05:34 2025] watchdog: BUG: soft lockup - CPU#22 stuck for 622s! [nft:257620]
+[Sat Nov 29 10:05:34 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:05:34 2025] CPU: 22 PID: 257620 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:05:34 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:05:34 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:05:34 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:05:34 2025] RSP: 0018:ffffb261428c7850 EFLAGS: 00000202
+[Sat Nov 29 10:05:34 2025] RAX: ffff9d0e00518f80 RBX: ffff9d0e26eb4800 RCX: 0000000000000006
+[Sat Nov 29 10:05:34 2025] RDX: ffff9d0ed50ac000 RSI: ffff9d0d186535d0 RDI: ffff9d0ed50ac000
+[Sat Nov 29 10:05:34 2025] RBP: ffff9d0d186535c0 R08: ffff9d0e26eb4810 R09: 0000000000000010
+[Sat Nov 29 10:05:34 2025] R10: 000000000098e7cf R11: ffff9d0d3c0f0800 R12: 0000000000000001
+[Sat Nov 29 10:05:34 2025] R13: 0000000000000010 R14: ffff9d0e26eb4810 R15: ffffffff91bce880
+[Sat Nov 29 10:05:34 2025] FS:  00007fea63d3a300(0000) GS:ffff9d2abfb80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:05:34 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:05:34 2025] CR2: 00007fea54e90000 CR3: 00000003831d4001 CR4: 00000000007706e0
+[Sat Nov 29 10:05:34 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:05:34 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:05:34 2025] PKRU: 55555554
+[Sat Nov 29 10:05:34 2025] Call Trace:
+[Sat Nov 29 10:05:34 2025]  <TASK>
+[Sat Nov 29 10:05:34 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:05:34 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:05:34 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:05:34 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:05:34 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:05:34 2025]  ? __alloc_pages+0x1de/0x330
+[Sat Nov 29 10:05:34 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:05:34 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:05:34 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:05:34 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:05:34 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:05:34 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:05:34 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:05:34 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:05:34 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:05:34 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:05:34 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:05:34 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:05:34 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:05:34 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:05:34 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:05:34 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:05:34 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:05:34 2025] RIP: 0033:0x7fea640a31d7
+[Sat Nov 29 10:05:34 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:05:34 2025] RSP: 002b:00007ffcd6448a08 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:05:34 2025] RAX: ffffffffffffffda RBX: 0000000000000073 RCX: 00007fea640a31d7
+[Sat Nov 29 10:05:34 2025] RDX: 0000000000000000 RSI: 00007ffcd645a270 RDI: 0000000000000003
+[Sat Nov 29 10:05:34 2025] RBP: 00007ffcd645a3c0 R08: 0000000000000004 R09: 0000562281d74e50
+[Sat Nov 29 10:05:34 2025] R10: 00007ffcd64489dc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:05:34 2025] R13: 00007ffcd645a4b0 R14: 00007ffcd6449140 R15: 000000003f2be000
+[Sat Nov 29 10:05:34 2025]  </TASK>
+
+
+[Sat Nov 29 10:06:46 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 22s! [nft:263984]
+[Sat Nov 29 10:06:46 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:06:46 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:06:46 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:06:46 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:06:46 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:06:46 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000297
+[Sat Nov 29 10:06:46 2025] RAX: ffff9d0f61cf1180 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:06:46 2025] RDX: ffff9d0e261e0000 RSI: 00000000000017ca RDI: ffff9d0e261e0000
+[Sat Nov 29 10:06:46 2025] RBP: ffffb261607da948 R08: 0000000000000035 R09: 0000000000000004
+[Sat Nov 29 10:06:46 2025] R10: 00000000009a95b2 R11: ffff9d0e29087880 R12: 0000000000000001
+[Sat Nov 29 10:06:46 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:06:46 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:06:46 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:06:46 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:06:46 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:06:46 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:06:46 2025] PKRU: 55555554
+[Sat Nov 29 10:06:46 2025] Call Trace:
+[Sat Nov 29 10:06:46 2025]  <TASK>
+[Sat Nov 29 10:06:46 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:06:46 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:06:46 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:06:46 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:06:46 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:06:46 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:06:46 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:06:46 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:06:46 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:06:46 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:06:46 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:06:46 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:06:46 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:06:46 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:06:46 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:06:46 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:06:46 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:06:46 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:06:46 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:06:46 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:06:46 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:06:46 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:06:46 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:06:46 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:06:46 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:06:46 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:06:46 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:06:46 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:06:46 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:06:46 2025]  </TASK>
+
+
+[Sat Nov 29 10:07:14 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 48s! [nft:263984]
+[Sat Nov 29 10:07:14 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:07:14 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:07:14 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:07:14 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:07:14 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:07:14 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000293
+[Sat Nov 29 10:07:14 2025] RAX: ffff9d0e62df2300 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:07:14 2025] RDX: ffff9d0e261e0000 RSI: 0000000000001968 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:07:14 2025] RBP: ffffb261618d08ec R08: 0000000000000037 R09: 0000000000000004
+[Sat Nov 29 10:07:14 2025] R10: 00000000009b3293 R11: ffff9d0d77ffa280 R12: 0000000000000001
+[Sat Nov 29 10:07:14 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:07:14 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:07:14 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:07:14 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:07:14 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:07:14 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:07:14 2025] PKRU: 55555554
+[Sat Nov 29 10:07:14 2025] Call Trace:
+[Sat Nov 29 10:07:14 2025]  <TASK>
+[Sat Nov 29 10:07:14 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:07:14 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:07:14 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:07:14 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:07:14 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:07:14 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:07:14 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:07:14 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:07:14 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:07:14 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:07:14 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:07:14 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:07:14 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:07:14 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:07:14 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:07:14 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:07:14 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:07:14 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:07:14 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:07:14 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:07:14 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:07:14 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:07:14 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:07:14 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:07:14 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:07:14 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:07:14 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:07:14 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:07:14 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:07:14 2025]  </TASK>
+
+
+[Sat Nov 29 10:07:42 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 74s! [nft:263984]
+[Sat Nov 29 10:07:42 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:07:42 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:07:42 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:07:42 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:07:42 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:07:42 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:07:42 2025] RAX: ffff9d0ea8506800 RBX: ffff9d0e3c514000 RCX: 000000000000000c
+[Sat Nov 29 10:07:42 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:07:42 2025] RBP: ffff9d0d186535c0 R08: ffff9d0e3c514010 R09: 0000000000000010
+[Sat Nov 29 10:07:42 2025] R10: 00000000009bac34 R11: ffff9d0cfba3bb00 R12: 0000000000000001
+[Sat Nov 29 10:07:42 2025] R13: 0000000000000010 R14: ffff9d0e3c514010 R15: ffffffff91bce880
+[Sat Nov 29 10:07:42 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:07:42 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:07:42 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:07:42 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:07:42 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:07:42 2025] PKRU: 55555554
+[Sat Nov 29 10:07:42 2025] Call Trace:
+[Sat Nov 29 10:07:42 2025]  <TASK>
+[Sat Nov 29 10:07:42 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:07:42 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:07:42 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:07:42 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:07:42 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:07:42 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:07:42 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:07:42 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:07:42 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:07:42 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:07:42 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:07:42 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:07:42 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:07:42 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:07:42 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:07:42 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:07:42 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:07:42 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:07:42 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:07:42 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:07:42 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:07:42 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:07:42 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:07:42 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:07:42 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:07:42 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:07:42 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:07:42 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:07:42 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:07:42 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:07:42 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:07:42 2025]  </TASK>
+
+
+[Sat Nov 29 10:08:10 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 100s! [nft:263984]
+[Sat Nov 29 10:08:10 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:08:10 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:08:10 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:08:10 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:08:10 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:08:10 2025] RSP: 0018:ffffb2614736b8e0 EFLAGS: 00000293
+[Sat Nov 29 10:08:10 2025] RAX: ffff9d0dfc6da680 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:08:10 2025] RDX: ffff9d0e261e0000 RSI: 0000000000001bb7 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:08:10 2025] RBP: ffffb26163105954 R08: 0000000000000038 R09: 0000000000000000
+[Sat Nov 29 10:08:10 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:08:10 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:08:10 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:08:10 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:08:10 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:08:10 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:08:10 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:08:10 2025] PKRU: 55555554
+[Sat Nov 29 10:08:10 2025] Call Trace:
+[Sat Nov 29 10:08:10 2025]  <TASK>
+[Sat Nov 29 10:08:10 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:08:10 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:08:10 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:08:10 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:08:10 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:08:10 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:08:10 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:08:10 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:08:10 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:08:10 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:08:10 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:08:10 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:08:10 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:08:10 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:08:10 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:08:10 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:08:10 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:08:10 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:08:10 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:08:10 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:08:10 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:08:10 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:08:10 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:08:10 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:08:10 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:08:10 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:08:10 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:08:10 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:08:10 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:08:10 2025]  </TASK>
+
+
+[Sat Nov 29 10:08:38 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 126s! [nft:263984]
+[Sat Nov 29 10:08:38 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:08:38 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:08:38 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:08:38 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:08:38 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:08:38 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000287
+[Sat Nov 29 10:08:38 2025] RAX: ffff9d0ce6576a00 RBX: ffff9d0dbe69c400 RCX: 000000000000000c
+[Sat Nov 29 10:08:38 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:08:38 2025] RBP: ffff9d0d186535c0 R08: ffff9d0dbe69c410 R09: 0000000000000010
+[Sat Nov 29 10:08:38 2025] R10: 00000000009c6c52 R11: ffff9d0de3119200 R12: 0000000000000001
+[Sat Nov 29 10:08:38 2025] R13: 0000000000000010 R14: ffff9d0dbe69c410 R15: ffffffff91bce880
+[Sat Nov 29 10:08:38 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:08:38 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:08:38 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:08:38 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:08:38 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:08:38 2025] PKRU: 55555554
+[Sat Nov 29 10:08:38 2025] Call Trace:
+[Sat Nov 29 10:08:38 2025]  <TASK>
+[Sat Nov 29 10:08:38 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:08:38 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:08:38 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:08:38 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:08:38 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:08:38 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:08:38 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:08:38 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:08:38 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:08:38 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:08:38 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:08:38 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:08:38 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:08:38 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:08:38 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:08:38 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:08:38 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:08:38 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:08:38 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:08:38 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:08:38 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:08:38 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:08:38 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:08:38 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:08:38 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:08:38 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:08:38 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:08:38 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:08:38 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:08:38 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:08:38 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:08:38 2025]  </TASK>
+
+
+[Sat Nov 29 10:09:06 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 152s! [nft:263984]
+[Sat Nov 29 10:09:06 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:09:06 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:09:06 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:09:06 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:09:06 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:09:06 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:09:06 2025] RAX: ffff9d0f4b9a4600 RBX: ffff9d0f4b2cec00 RCX: 000000000000000c
+[Sat Nov 29 10:09:06 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:09:06 2025] RBP: ffff9d0d186535c0 R08: ffff9d0f4b2cec10 R09: 0000000000000010
+[Sat Nov 29 10:09:06 2025] R10: 00000000009cbd0a R11: ffff9d0e7a39da00 R12: 0000000000000001
+[Sat Nov 29 10:09:06 2025] R13: 0000000000000010 R14: ffff9d0f4b2cec10 R15: ffffffff91bce880
+[Sat Nov 29 10:09:06 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:09:06 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:09:06 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:09:06 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:09:06 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:09:06 2025] PKRU: 55555554
+[Sat Nov 29 10:09:06 2025] Call Trace:
+[Sat Nov 29 10:09:06 2025]  <TASK>
+[Sat Nov 29 10:09:06 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:09:06 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:09:06 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:09:06 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:09:06 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:09:06 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:09:06 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:09:06 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:09:06 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:09:06 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:09:06 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:09:06 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:09:06 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:09:06 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:09:06 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:09:06 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:09:06 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:09:06 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:09:06 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:09:06 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:09:06 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:09:06 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:09:06 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:09:06 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:09:06 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:09:06 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:09:06 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:09:06 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:09:06 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:09:06 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:09:06 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:09:06 2025]  </TASK>
+
+
+[Sat Nov 29 10:09:34 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 178s! [nft:263984]
+[Sat Nov 29 10:09:34 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:09:34 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:09:34 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:09:34 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:09:34 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:09:34 2025] RSP: 0018:ffffb2614736b8e0 EFLAGS: 00000293
+[Sat Nov 29 10:09:34 2025] RAX: ffff9d0f62bc6080 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:09:34 2025] RDX: ffff9d0e261e0000 RSI: 0000000000001e3e RDI: ffff9d0e261e0000
+[Sat Nov 29 10:09:34 2025] RBP: ffffb26164b87560 R08: 0000000000000039 R09: 0000000000000000
+[Sat Nov 29 10:09:34 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:09:34 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:09:34 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:09:34 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:09:34 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:09:34 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:09:34 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:09:34 2025] PKRU: 55555554
+[Sat Nov 29 10:09:34 2025] Call Trace:
+[Sat Nov 29 10:09:34 2025]  <TASK>
+[Sat Nov 29 10:09:34 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:09:34 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:09:34 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:09:34 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:09:34 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:09:34 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:09:34 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:09:34 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:09:34 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:09:34 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:09:34 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:09:34 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:09:34 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:09:34 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:09:34 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:09:34 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:09:34 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:09:34 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:09:34 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:09:34 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:09:34 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:09:34 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:09:34 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:09:34 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:09:34 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:09:34 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:09:34 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:09:34 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:09:34 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:09:34 2025]  </TASK>
+
+[Sat Nov 29 10:10:02 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 205s! [nft:263984]
+[Sat Nov 29 10:10:02 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:10:02 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:10:02 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:10:02 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:10:02 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:10:02 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000297
+[Sat Nov 29 10:10:02 2025] RAX: ffff9d0d88aefa00 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:10:02 2025] RDX: ffff9d0e261e0000 RSI: 0000000000001ef7 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:10:02 2025] RBP: ffffb2616531ced0 R08: 0000000000000031 R09: 0000000000000004
+[Sat Nov 29 10:10:02 2025] R10: 00000000009d4dce R11: ffff9d0e52013500 R12: 0000000000000001
+[Sat Nov 29 10:10:02 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:10:02 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:10:02 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:10:02 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:10:02 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:10:02 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:10:02 2025] PKRU: 55555554
+[Sat Nov 29 10:10:02 2025] Call Trace:
+[Sat Nov 29 10:10:02 2025]  <TASK>
+[Sat Nov 29 10:10:02 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:10:02 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:10:02 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:10:02 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:10:02 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:10:02 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:10:02 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:10:02 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:10:02 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:10:02 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:10:02 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:10:02 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:10:02 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:10:02 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:10:02 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:10:02 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:10:02 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:10:02 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:10:02 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:10:02 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:10:02 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:10:02 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:10:02 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:10:02 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:10:02 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:10:02 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:10:02 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:10:02 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:10:02 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:10:02 2025]  </TASK>
+
+
+[Sat Nov 29 10:10:30 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 231s! [nft:263984]
+[Sat Nov 29 10:10:30 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:10:30 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:10:30 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:10:30 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:10:30 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:10:30 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000297
+[Sat Nov 29 10:10:30 2025] RAX: ffff9d0ec9c3d700 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:10:30 2025] RDX: ffff9d0e261e0000 RSI: 0000000000001fa6 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:10:30 2025] RBP: ffffb26165a48344 R08: 0000000000000031 R09: 0000000000000004
+[Sat Nov 29 10:10:30 2025] R10: 00000000009d901d R11: ffff9d0d8d427200 R12: 0000000000000001
+[Sat Nov 29 10:10:30 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:10:30 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:10:30 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:10:30 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:10:30 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:10:30 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:10:30 2025] PKRU: 55555554
+[Sat Nov 29 10:10:30 2025] Call Trace:
+[Sat Nov 29 10:10:30 2025]  <TASK>
+[Sat Nov 29 10:10:30 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:10:30 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:10:30 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:10:30 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:10:30 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:10:30 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:10:30 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:10:30 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:10:30 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:10:30 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:10:30 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:10:30 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:10:30 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:10:30 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:10:30 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:10:30 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:10:30 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:10:30 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:10:30 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:10:30 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:10:30 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:10:30 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:10:30 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:10:30 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:10:30 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:10:30 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:10:30 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:10:30 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:10:30 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:10:30 2025]  </TASK>
+
+[Sat Nov 29 10:10:58 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 257s! [nft:263984]
+[Sat Nov 29 10:10:58 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:10:58 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:10:58 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:10:58 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:10:58 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:10:58 2025] RSP: 0018:ffffb2614736b8e0 EFLAGS: 00000297
+[Sat Nov 29 10:10:58 2025] RAX: ffff9d0e61822400 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:10:58 2025] RDX: ffff9d0e261e0000 RSI: 000000000000204b RDI: ffff9d0e261e0000
+[Sat Nov 29 10:10:58 2025] RBP: ffffb26166109a34 R08: 0000000000000039 R09: 0000000000000000
+[Sat Nov 29 10:10:58 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:10:58 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:10:58 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:10:58 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:10:58 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:10:58 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:10:58 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:10:58 2025] PKRU: 55555554
+[Sat Nov 29 10:10:58 2025] Call Trace:
+[Sat Nov 29 10:10:58 2025]  <TASK>
+[Sat Nov 29 10:10:58 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:10:58 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:10:58 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:10:58 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:10:58 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:10:58 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:10:58 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:10:58 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:10:58 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:10:58 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:10:58 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:10:58 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:10:58 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:10:58 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:10:58 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:10:58 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:10:58 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:10:58 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:10:58 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:10:58 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:10:58 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:10:58 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:10:58 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:10:58 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:10:58 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:10:58 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:10:58 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:10:58 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:10:58 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:10:58 2025]  </TASK>
+
+
+[Sat Nov 29 10:11:26 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 283s! [nft:263984]
+[Sat Nov 29 10:11:26 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:11:26 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:11:26 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:11:26 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:11:26 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:11:26 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000293
+[Sat Nov 29 10:11:26 2025] RAX: ffff9d0f03566580 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:11:26 2025] RDX: ffff9d0e261e0000 RSI: 00000000000020e7 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:11:26 2025] RBP: ffffb2616676f188 R08: 0000000000000039 R09: 0000000000000004
+[Sat Nov 29 10:11:26 2025] R10: 00000000009e09c4 R11: ffff9d0ea8596f80 R12: 0000000000000001
+[Sat Nov 29 10:11:26 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:11:26 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:11:26 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:11:26 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:11:26 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:11:26 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:11:26 2025] PKRU: 55555554
+[Sat Nov 29 10:11:26 2025] Call Trace:
+[Sat Nov 29 10:11:26 2025]  <TASK>
+[Sat Nov 29 10:11:26 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:11:26 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:11:26 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:11:26 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:11:26 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:11:26 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:11:26 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:11:26 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:11:26 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:11:26 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:11:26 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:11:26 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:11:26 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:11:26 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:11:26 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:11:26 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:11:26 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:11:26 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:11:26 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:11:26 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:11:26 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:11:26 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:11:26 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:11:26 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:11:26 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:11:26 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:11:26 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:11:26 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:11:26 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:11:26 2025]  </TASK>
+
+
+[Sat Nov 29 10:11:54 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 309s! [nft:263984]
+[Sat Nov 29 10:11:54 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:11:54 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:11:54 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:11:54 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:11:54 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:11:54 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000202
+[Sat Nov 29 10:11:54 2025] RAX: ffff9d0e622c6480 RBX: ffff9d0dd259c000 RCX: 0000000000000008
+[Sat Nov 29 10:11:54 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:11:54 2025] RBP: ffff9d0d186535c0 R08: ffff9d0dd259c010 R09: 0000000000000010
+[Sat Nov 29 10:11:54 2025] R10: 00000000009e4239 R11: ffff9d0e10e38c80 R12: 0000000000000001
+[Sat Nov 29 10:11:54 2025] R13: 0000000000000010 R14: ffff9d0dd259c010 R15: ffffffff91bce880
+[Sat Nov 29 10:11:54 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:11:54 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:11:54 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:11:54 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:11:54 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:11:54 2025] PKRU: 55555554
+[Sat Nov 29 10:11:54 2025] Call Trace:
+[Sat Nov 29 10:11:54 2025]  <TASK>
+[Sat Nov 29 10:11:54 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:11:54 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:11:54 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:11:54 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:11:54 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:11:54 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:11:54 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:11:54 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:11:54 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:11:54 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:11:54 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:11:54 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:11:54 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:11:54 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:11:54 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:11:54 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:11:54 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:11:54 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:11:54 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:11:54 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:11:54 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:11:54 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:11:54 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:11:54 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:11:54 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:11:54 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:11:54 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:11:54 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:11:54 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:11:54 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:11:54 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:11:54 2025]  </TASK>
+
+
+[Sat Nov 29 10:12:22 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 335s! [nft:263984]
+[Sat Nov 29 10:12:22 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:12:22 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:12:22 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:12:22 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:12:22 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:12:22 2025] RSP: 0018:ffffb2614736b8e0 EFLAGS: 00000293
+[Sat Nov 29 10:12:22 2025] RAX: ffff9d0e62241380 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:12:22 2025] RDX: ffff9d0e261e0000 RSI: 000000000000220c RDI: ffff9d0e261e0000
+[Sat Nov 29 10:12:22 2025] RBP: ffffb2616736ee78 R08: 0000000000000039 R09: 0000000000000000
+[Sat Nov 29 10:12:22 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:12:22 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:12:22 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:12:22 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:12:22 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:12:22 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:12:22 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:12:22 2025] PKRU: 55555554
+[Sat Nov 29 10:12:22 2025] Call Trace:
+[Sat Nov 29 10:12:22 2025]  <TASK>
+[Sat Nov 29 10:12:22 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:12:22 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:12:22 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:12:22 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:12:22 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:12:22 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:12:22 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:12:22 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:12:22 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:12:22 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:12:22 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:12:22 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:12:22 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:12:22 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:12:22 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:12:22 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:12:22 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:12:22 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:12:22 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:12:22 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:12:22 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:12:22 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:12:22 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:12:22 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:12:22 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:12:22 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:12:22 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:12:22 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:12:22 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:12:22 2025]  </TASK>
+
+
+[Sat Nov 29 10:12:50 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 361s! [nft:263984]
+[Sat Nov 29 10:12:50 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:12:50 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:12:50 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:12:50 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:12:50 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:12:50 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000202
+[Sat Nov 29 10:12:50 2025] RAX: ffff9d0f1bbe4680 RBX: ffff9d0dd535bc00 RCX: 0000000000000006
+[Sat Nov 29 10:12:50 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:12:50 2025] RBP: ffff9d0d186535c0 R08: ffff9d0dd535bc10 R09: 0000000000000010
+[Sat Nov 29 10:12:50 2025] R10: 00000000009ead16 R11: ffff9d0ca155a700 R12: 0000000000000001
+[Sat Nov 29 10:12:50 2025] R13: 0000000000000010 R14: ffff9d0dd535bc10 R15: ffffffff91bce880
+[Sat Nov 29 10:12:50 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:12:50 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:12:50 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:12:50 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:12:50 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:12:50 2025] PKRU: 55555554
+[Sat Nov 29 10:12:50 2025] Call Trace:
+[Sat Nov 29 10:12:50 2025]  <TASK>
+[Sat Nov 29 10:12:50 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:12:50 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:12:50 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:12:50 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:12:50 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:12:50 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:12:50 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:12:50 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:12:50 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:12:50 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:12:50 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:12:50 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:12:50 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:12:50 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:12:50 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:12:50 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:12:50 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:12:50 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:12:50 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:12:50 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:12:50 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:12:50 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:12:50 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:12:50 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:12:50 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:12:50 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:12:50 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:12:50 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:12:50 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:12:50 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:12:50 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:12:50 2025]  </TASK>
+
+
+[Sat Nov 29 10:13:18 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 387s! [nft:263984]
+[Sat Nov 29 10:13:18 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:13:18 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:13:18 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:13:18 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:13:18 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:13:18 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:13:18 2025] RAX: ffff9d0d45d68200 RBX: ffff9d0c9e141400 RCX: 0000000000000006
+[Sat Nov 29 10:13:18 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:13:18 2025] RBP: ffff9d0d186535c0 R08: ffff9d0c9e141410 R09: 0000000000000010
+[Sat Nov 29 10:13:18 2025] R10: 00000000009edf7b R11: ffff9d0d260a4680 R12: 0000000000000001
+[Sat Nov 29 10:13:18 2025] R13: 0000000000000010 R14: ffff9d0c9e141410 R15: ffffffff91bce880
+[Sat Nov 29 10:13:18 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:13:18 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:13:18 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:13:18 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:13:18 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:13:18 2025] PKRU: 55555554
+[Sat Nov 29 10:13:18 2025] Call Trace:
+[Sat Nov 29 10:13:18 2025]  <TASK>
+[Sat Nov 29 10:13:18 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:13:18 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:13:18 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:13:18 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:13:18 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:13:18 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:13:18 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:13:18 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:13:18 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:13:18 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:13:18 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:13:18 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:13:18 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:13:18 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:13:18 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:13:18 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:13:18 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:13:18 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:13:18 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:13:18 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:13:18 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:13:18 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:13:18 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:13:18 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:13:18 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:13:18 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:13:18 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:13:18 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:13:18 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:13:18 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:13:18 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:13:18 2025]  </TASK>
+
+
+[Sat Nov 29 10:13:46 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 413s! [nft:263984]
+[Sat Nov 29 10:13:46 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:13:46 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:13:46 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:13:46 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:13:46 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:13:46 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:13:46 2025] RAX: ffff9d0f340fa700 RBX: ffff9d0d84d11800 RCX: 0000000000000008
+[Sat Nov 29 10:13:46 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:13:46 2025] RBP: ffff9d0d186535c0 R08: ffff9d0d84d11810 R09: 0000000000000010
+[Sat Nov 29 10:13:46 2025] R10: 00000000009f105c R11: ffff9d0dd3032680 R12: 0000000000000001
+[Sat Nov 29 10:13:46 2025] R13: 0000000000000010 R14: ffff9d0d84d11810 R15: ffffffff91bce880
+[Sat Nov 29 10:13:46 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:13:46 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:13:46 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:13:46 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:13:46 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:13:46 2025] PKRU: 55555554
+[Sat Nov 29 10:13:46 2025] Call Trace:
+[Sat Nov 29 10:13:46 2025]  <TASK>
+[Sat Nov 29 10:13:46 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:13:46 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:13:46 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:13:46 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:13:46 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:13:46 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:13:46 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:13:46 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:13:46 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:13:46 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:13:46 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:13:46 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:13:46 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:13:46 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:13:46 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:13:46 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:13:46 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:13:46 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:13:46 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:13:46 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:13:46 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:13:46 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:13:46 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:13:46 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:13:46 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:13:46 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:13:46 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:13:46 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:13:46 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:13:46 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:13:46 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:13:46 2025]  </TASK>
+
+
+[Sat Nov 29 10:14:14 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 439s! [nft:263984]
+[Sat Nov 29 10:14:14 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:14:14 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:14:14 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:14:14 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:14:14 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:14:14 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:14:14 2025] RAX: ffff9d0db4931400 RBX: ffff9d0f34006800 RCX: 0000000000000006
+[Sat Nov 29 10:14:14 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:14:14 2025] RBP: ffff9d0d186535c0 R08: ffff9d0f34006810 R09: 0000000000000010
+[Sat Nov 29 10:14:14 2025] R10: 00000000009f401a R11: ffff9d0d9c83d100 R12: 0000000000000001
+[Sat Nov 29 10:14:14 2025] R13: 0000000000000010 R14: ffff9d0f34006810 R15: ffffffff91bce880
+[Sat Nov 29 10:14:14 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:14:14 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:14:14 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:14:14 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:14:14 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:14:14 2025] PKRU: 55555554
+[Sat Nov 29 10:14:14 2025] Call Trace:
+[Sat Nov 29 10:14:14 2025]  <TASK>
+[Sat Nov 29 10:14:14 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:14:14 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:14:14 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:14:14 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:14:14 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:14:14 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:14:14 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:14:14 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:14:14 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:14:14 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:14:14 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:14:14 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:14:14 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:14:14 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:14:14 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:14:14 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:14:14 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:14:14 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:14:14 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:14:14 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:14:14 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:14:14 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:14:14 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:14:14 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:14:14 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:14:14 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:14:14 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:14:14 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:14:14 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:14:14 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:14:14 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:14:14 2025]  </TASK>
+
+
+[Sat Nov 29 10:14:42 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 465s! [nft:263984]
+[Sat Nov 29 10:14:42 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:14:42 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:14:42 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:14:42 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:14:42 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:14:42 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000293
+[Sat Nov 29 10:14:42 2025] RAX: ffff9d0de2be0a00 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:14:42 2025] RDX: ffff9d0e261e0000 RSI: 0000000000002495 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:14:42 2025] RBP: ffffb26168e065ec R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:14:42 2025] R10: 00000000009f6eb5 R11: ffff9d0e3dd65580 R12: 0000000000000001
+[Sat Nov 29 10:14:42 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:14:42 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:14:42 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:14:42 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:14:42 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:14:42 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:14:42 2025] PKRU: 55555554
+[Sat Nov 29 10:14:42 2025] Call Trace:
+[Sat Nov 29 10:14:42 2025]  <TASK>
+[Sat Nov 29 10:14:42 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:14:42 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:14:42 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:14:42 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:14:42 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:14:42 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:14:42 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:14:42 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:14:42 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:14:42 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:14:42 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:14:42 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:14:42 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:14:42 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:14:42 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:14:42 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:14:42 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:14:42 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:14:42 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:14:42 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:14:42 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:14:42 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:14:42 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:14:42 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:14:42 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:14:42 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:14:42 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:14:42 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:14:42 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:14:42 2025]  </TASK>
+
+[Sat Nov 29 10:15:10 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 491s! [nft:263984]
+[Sat Nov 29 10:15:10 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:15:10 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:15:10 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:15:10 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:15:10 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:15:10 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000297
+[Sat Nov 29 10:15:10 2025] RAX: ffff9d0d9d937100 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:15:10 2025] RDX: ffff9d0e261e0000 RSI: 000000000000250c RDI: ffff9d0e261e0000
+[Sat Nov 29 10:15:10 2025] RBP: ffffb261692e65c0 R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:15:10 2025] R10: 00000000009f9bcc R11: ffff9d0ccb5c5680 R12: 0000000000000001
+[Sat Nov 29 10:15:10 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:15:10 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:15:10 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:15:10 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:15:10 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:15:10 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:15:10 2025] PKRU: 55555554
+[Sat Nov 29 10:15:10 2025] Call Trace:
+[Sat Nov 29 10:15:10 2025]  <TASK>
+[Sat Nov 29 10:15:10 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:15:10 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:15:10 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:15:10 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:15:10 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:15:10 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:15:10 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:15:10 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:15:10 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:15:10 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:15:10 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:15:10 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:15:10 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:15:10 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:15:10 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:15:10 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:15:10 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:15:10 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:15:10 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:15:10 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:15:10 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:15:10 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:15:10 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:15:10 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:15:10 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:15:10 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:15:10 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:15:10 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:15:10 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:15:10 2025]  </TASK>
+
+[Sat Nov 29 10:15:38 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 517s! [nft:263984]
+[Sat Nov 29 10:15:38 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:15:38 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:15:38 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:15:38 2025] RIP: 0010:__nft_set_trans_bind.isra.0+0x64/0x90 [nf_tables]
+[Sat Nov 29 10:15:38 2025] Code: c2 f4 c3 cc 48 8b 45 18 48 8d 75 10 48 39 f0 75 16 eb 2f 83 f9 0c 75 06 48 3b 58 58 74 2f 48 8b 40 08 48 39 f0 74 1b 8b 48 20 <83> f9 09 75 e4 48 3b 58 58 75 e9 44 88 60 71 48 8b 40 08 48 39 f0
+[Sat Nov 29 10:15:38 2025] RSP: 0018:ffffb2614736b850 EFLAGS: 00000206
+[Sat Nov 29 10:15:38 2025] RAX: ffff9d0da7cb0c00 RBX: ffff9d0e0106b000 RCX: 0000000000000006
+[Sat Nov 29 10:15:38 2025] RDX: ffff9d0e261e0000 RSI: ffff9d0d186535d0 RDI: ffff9d0e261e0000
+[Sat Nov 29 10:15:38 2025] RBP: ffff9d0d186535c0 R08: ffff9d0e0106b010 R09: 0000000000000010
+[Sat Nov 29 10:15:38 2025] R10: 00000000009fc75f R11: ffff9d0d12c59100 R12: 0000000000000001
+[Sat Nov 29 10:15:38 2025] R13: 0000000000000010 R14: ffff9d0e0106b010 R15: ffffffff91bce880
+[Sat Nov 29 10:15:38 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:15:38 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:15:38 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:15:38 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:15:38 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:15:38 2025] PKRU: 55555554
+[Sat Nov 29 10:15:38 2025] Call Trace:
+[Sat Nov 29 10:15:38 2025]  <TASK>
+[Sat Nov 29 10:15:38 2025]  nf_tables_bind_set+0x118/0x160 [nf_tables]
+[Sat Nov 29 10:15:38 2025]  ? nf_tables_init_net+0xa0/0xa0 [nf_tables]
+[Sat Nov 29 10:15:38 2025]  nft_lookup_init+0xd7/0x150 [nf_tables]
+[Sat Nov 29 10:15:38 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:15:38 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:15:38 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:15:38 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:15:38 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:15:38 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:15:38 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:15:38 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:15:38 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:15:38 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:15:38 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:15:38 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:15:38 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:15:38 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:15:38 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:15:38 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:15:38 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:15:38 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:15:38 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:15:38 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:15:38 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:15:38 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:15:38 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:15:38 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:15:38 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:15:38 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:15:38 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:15:38 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:15:38 2025]  </TASK>
+
+[Sat Nov 29 10:16:06 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 544s! [nft:263984]
+[Sat Nov 29 10:16:06 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:16:06 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:16:06 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:16:06 2025] RIP: 0010:nf_tables_newset+0x3db/0xe20 [nf_tables]
+[Sat Nov 29 10:16:06 2025] Code: 85 ed 0f 84 46 04 00 00 4d 8b ba a8 00 00 00 4d 8d a2 a8 00 00 00 4d 39 fc 74 48 48 89 5c 24 18 4c 89 fb 4d 89 d7 48 8b 73 38 <4c> 89 ef e8 bd e9 15 cd 85 c0 75 19 44 0f b6 9b c9 00 00 00 41 c0
+[Sat Nov 29 10:16:06 2025] RSP: 0018:ffffb2614736b8a8 EFLAGS: 00000283
+[Sat Nov 29 10:16:06 2025] RAX: 00000000fffffffe RBX: ffff9d0e9b7f0800 RCX: ffffb26169c46b65
+[Sat Nov 29 10:16:06 2025] RDX: 0000000000000009 RSI: ffff9d0df708fb30 RDI: ffff9d0df708ff10
+[Sat Nov 29 10:16:06 2025] RBP: 0000000000000001 R08: 0000000000000036 R09: 0000000000000000
+[Sat Nov 29 10:16:06 2025] R10: ffff9d0c8660a200 R11: 0000000000000001 R12: ffff9d0c8660a2a8
+[Sat Nov 29 10:16:06 2025] R13: ffffb26169c46b5c R14: ffffb2614736ba08 R15: ffff9d0c8660a200
+[Sat Nov 29 10:16:06 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:16:06 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:16:06 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:16:06 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:16:06 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:16:06 2025] PKRU: 55555554
+[Sat Nov 29 10:16:06 2025] Call Trace:
+[Sat Nov 29 10:16:06 2025]  <TASK>
+[Sat Nov 29 10:16:06 2025]  ? nft_delrule+0xcb/0x190 [nf_tables]
+[Sat Nov 29 10:16:06 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:16:06 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:16:06 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:16:06 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:16:06 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:16:06 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:16:06 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:16:06 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:16:06 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:16:06 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:16:06 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:16:06 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:16:06 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:16:06 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:16:06 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:16:06 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:16:06 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:16:06 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:16:06 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:16:06 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:16:06 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:16:06 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:16:06 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:16:06 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:16:06 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:16:06 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:16:06 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:16:06 2025]  </TASK>
+
+[Sat Nov 29 10:16:34 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 570s! [nft:263984]
+[Sat Nov 29 10:16:34 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:16:34 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:16:34 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:16:34 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:16:34 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:16:34 2025] RSP: 0018:ffffb2614736b8e0 EFLAGS: 00000293
+[Sat Nov 29 10:16:34 2025] RAX: ffff9d0ca22ec180 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:16:34 2025] RDX: ffff9d0e261e0000 RSI: 000000000000265f RDI: ffff9d0e261e0000
+[Sat Nov 29 10:16:34 2025] RBP: ffffb2616a0c859c R08: 0000000000000033 R09: 0000000000000000
+[Sat Nov 29 10:16:34 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:16:34 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:16:34 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:16:34 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:16:34 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:16:34 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:16:34 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:16:34 2025] PKRU: 55555554
+[Sat Nov 29 10:16:34 2025] Call Trace:
+[Sat Nov 29 10:16:34 2025]  <TASK>
+[Sat Nov 29 10:16:34 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:16:34 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:16:34 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:16:34 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:16:34 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:16:34 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:16:34 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:16:34 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:16:34 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:16:34 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:16:34 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:16:34 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:16:34 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:16:34 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:16:34 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:16:34 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:16:34 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:16:34 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:16:34 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:16:34 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:16:34 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:16:34 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:16:34 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:16:34 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:16:34 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:16:34 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:16:34 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:16:34 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:16:34 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:16:34 2025]  </TASK>
+
+[Sat Nov 29 10:17:02 2025] watchdog: BUG: soft lockup - CPU#25 stuck for 596s! [nft:263984]
+[Sat Nov 29 10:17:02 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:17:02 2025] CPU: 25 PID: 263984 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:17:02 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:17:02 2025] RIP: 0010:nft_set_lookup_global+0xe1/0x120 [nf_tables]
+[Sat Nov 29 10:17:02 2025] Code: 00 48 8b 1c d8 e8 ef c5 c3 cc 8b 75 04 48 8b 43 10 48 8d 4b 10 0f ce 48 39 c8 75 0a eb 37 48 8b 00 48 39 c1 74 2f 83 78 20 09 <75> f2 3b 70 60 75 ed 4c 8b 78 58 4d 3b 6f 28 75 e3 41 0f b6 bf c9
+[Sat Nov 29 10:17:02 2025] RSP: 0018:ffffb2614736b880 EFLAGS: 00000206
+[Sat Nov 29 10:17:02 2025] RAX: ffff9d0f4b9b3800 RBX: ffff9d0d186535c0 RCX: ffff9d0d186535d0
+[Sat Nov 29 10:17:02 2025] RDX: ffff9d0e261e0000 RSI: 00000000000026ca RDI: ffff9d0e261e0000
+[Sat Nov 29 10:17:02 2025] RBP: ffffb2616a52bb28 R08: 0000000000000033 R09: 0000000000000004
+[Sat Nov 29 10:17:02 2025] R10: 0000000000a044ca R11: ffff9d0ef84d6c00 R12: 0000000000000001
+[Sat Nov 29 10:17:02 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: fffffffffffffffe
+[Sat Nov 29 10:17:02 2025] FS:  00007f55dea7b300(0000) GS:ffff9d2abfc40000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:17:02 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:17:02 2025] CR2: 00007f55c8d6c000 CR3: 0000000326c92004 CR4: 00000000007706e0
+[Sat Nov 29 10:17:02 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:17:02 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:17:02 2025] PKRU: 55555554
+[Sat Nov 29 10:17:02 2025] Call Trace:
+[Sat Nov 29 10:17:02 2025]  <TASK>
+[Sat Nov 29 10:17:02 2025]  nft_lookup_init+0x50/0x150 [nf_tables]
+[Sat Nov 29 10:17:02 2025]  nf_tables_newrule+0x4f8/0xc60 [nf_tables]
+[Sat Nov 29 10:17:02 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:17:02 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:17:02 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:17:02 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:17:02 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:17:02 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:17:02 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:17:02 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:17:02 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:17:02 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:17:02 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:17:02 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:17:02 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:17:02 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:17:02 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:17:02 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:17:02 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:17:02 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:17:02 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:17:02 2025] RIP: 0033:0x7f55dede41d7
+[Sat Nov 29 10:17:02 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:17:02 2025] RSP: 002b:00007ffd656d4a28 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:17:02 2025] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f55dede41d7
+[Sat Nov 29 10:17:02 2025] RDX: 0000000000000000 RSI: 00007ffd656e6200 RDI: 0000000000000003
+[Sat Nov 29 10:17:02 2025] RBP: 00007ffd656e6350 R08: 0000000000000004 R09: 000055e489e8be50
+[Sat Nov 29 10:17:02 2025] R10: 00007ffd656d49fc R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:17:02 2025] R13: 00007ffd656e6440 R14: 00007ffd656d50d0 R15: 000000003b830000
+[Sat Nov 29 10:17:02 2025]  </TASK>
+
+[Sat Nov 29 10:18:18 2025] watchdog: BUG: soft lockup - CPU#30 stuck for 22s! [nft:270248]
+[Sat Nov 29 10:18:18 2025] Modules linked in: nf_conntrack_netlink veth xt_state xt_connmark xt_nat xt_addrtype nft_fib_ipv6 nft_fib nft_reject_ipv6 nf_reject_ipv6 nft_nat nft_numgen nft_reject_ipv4 nf_reject_ipv4 nft_reject nft_masq nft_ct nft_chain_nat ip_set ip_vs nf_tables nfnetlink ip6table_filter ip6table_nat iptable_nat nf_nat ip6table_mangle xt_conntrack xt_comment iptable_mangle iptable_filter squashfs loop overlay ena crc32_pclmul serio crc32c_intel ghash_clmulni_intel button sch_fq_codel nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 drm fuse i2c_core backlight binfmt_misc configfs bpf_preload efivarfs dmi_sysfs
+[Sat Nov 29 10:18:18 2025] CPU: 30 PID: 270248 Comm: nft Tainted: G             L     6.1.144 #1
+[Sat Nov 29 10:18:18 2025] Hardware name: Amazon EC2 m6i.8xlarge/, BIOS 1.0 10/16/2017
+[Sat Nov 29 10:18:18 2025] RIP: 0010:strlen+0x8/0x20
+[Sat Nov 29 10:18:18 2025] Code: c7 01 84 c0 74 05 48 39 f7 75 ec 31 c0 c3 cc cc cc cc 48 89 f8 e9 d8 5d 2b 00 0f 1f 84 00 00 00 00 00 80 3f 00 74 14 48 89 f8 <48> 83 c0 01 80 38 00 75 f7 48 29 f8 c3 cc cc cc cc 31 c0 c3 cc cc
+[Sat Nov 29 10:18:18 2025] RSP: 0018:ffffb26140bf78c0 EFLAGS: 00000202
+[Sat Nov 29 10:18:18 2025] RAX: ffff9d0f33e74762 RBX: ffff9d0f33e74760 RCX: ffffb2615ff8db29
+[Sat Nov 29 10:18:18 2025] RDX: 0000000000000008 RSI: ffff9d0f33e74760 RDI: ffff9d0f33e74760
+[Sat Nov 29 10:18:18 2025] RBP: ffffb2615ff8db20 R08: 0000000000000033 R09: 0000000000000000
+[Sat Nov 29 10:18:18 2025] R10: ffffffffc05655c0 R11: 0000000000000001 R12: 0000000000000001
+[Sat Nov 29 10:18:18 2025] R13: ffff9d0c8660a200 R14: 0000000000000001 R15: ffff9d0eca254800
+[Sat Nov 29 10:18:18 2025] FS:  00007fbf126d7300(0000) GS:ffff9d2abfd80000(0000) knlGS:0000000000000000
+[Sat Nov 29 10:18:18 2025] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[Sat Nov 29 10:18:18 2025] CR2: 00007fbf026a0000 CR3: 00000002ca692002 CR4: 00000000007706e0
+[Sat Nov 29 10:18:18 2025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[Sat Nov 29 10:18:18 2025] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[Sat Nov 29 10:18:18 2025] PKRU: 55555554
+[Sat Nov 29 10:18:18 2025] Call Trace:
+[Sat Nov 29 10:18:18 2025]  <TASK>
+[Sat Nov 29 10:18:18 2025]  nla_strcmp+0x10/0x60
+[Sat Nov 29 10:18:18 2025]  nft_set_lookup_global+0x4d/0x120 [nf_tables]
+[Sat Nov 29 10:18:18 2025]  nf_tables_newsetelem+0xd5/0x260 [nf_tables]
+[Sat Nov 29 10:18:18 2025]  ? __nla_validate_parse+0x139/0x1a0
+[Sat Nov 29 10:18:18 2025]  nfnetlink_rcv_batch+0x5fd/0x970 [nfnetlink]
+[Sat Nov 29 10:18:18 2025]  ? rmqueue_bulk+0x2e7/0x590
+[Sat Nov 29 10:18:18 2025]  ? sysvec_call_function_single+0x53/0x90
+[Sat Nov 29 10:18:18 2025]  ? asm_sysvec_apic_timer_interrupt+0x16/0x20
+[Sat Nov 29 10:18:18 2025]  ? __nla_validate_parse+0x48/0x1a0
+[Sat Nov 29 10:18:18 2025]  nfnetlink_rcv+0x164/0x182 [nfnetlink]
+[Sat Nov 29 10:18:18 2025]  netlink_unicast+0x23e/0x390
+[Sat Nov 29 10:18:18 2025]  netlink_sendmsg+0x250/0x4b0
+[Sat Nov 29 10:18:18 2025]  __sock_sendmsg+0x5f/0x70
+[Sat Nov 29 10:18:18 2025]  ____sys_sendmsg+0x246/0x2c0
+[Sat Nov 29 10:18:18 2025]  ? copy_msghdr_from_user+0x6d/0xa0
+[Sat Nov 29 10:18:18 2025]  ___sys_sendmsg+0x86/0xd0
+[Sat Nov 29 10:18:18 2025]  ? cred_has_capability.isra.0+0x75/0x120
+[Sat Nov 29 10:18:18 2025]  ? security_capable+0x3d/0x60
+[Sat Nov 29 10:18:18 2025]  ? release_sock+0x19/0x90
+[Sat Nov 29 10:18:18 2025]  ? sk_setsockopt+0x3ce/0x13b0
+[Sat Nov 29 10:18:18 2025]  __sys_sendmsg+0x57/0xa0
+[Sat Nov 29 10:18:18 2025]  do_syscall_64+0x35/0x80
+[Sat Nov 29 10:18:18 2025]  entry_SYSCALL_64_after_hwframe+0x6e/0xd8
+[Sat Nov 29 10:18:18 2025] RIP: 0033:0x7fbf12a401d7
+[Sat Nov 29 10:18:18 2025] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[Sat Nov 29 10:18:18 2025] RSP: 002b:00007ffc219dced8 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[Sat Nov 29 10:18:18 2025] RAX: ffffffffffffffda RBX: 000000000000003e RCX: 00007fbf12a401d7
+[Sat Nov 29 10:18:18 2025] RDX: 0000000000000000 RSI: 00007ffc219ee3f0 RDI: 0000000000000003
+[Sat Nov 29 10:18:18 2025] RBP: 00007ffc219ee540 R08: 0000000000000004 R09: 000055d1da24ce50
+[Sat Nov 29 10:18:18 2025] R10: 00007ffc219dceac R11: 0000000000000246 R12: 0000000000000003
+[Sat Nov 29 10:18:18 2025] R13: 00007ffc219ee630 R14: 00007ffc219dd2c0 R15: 000000002685d000
+[Sat Nov 29 10:18:18 2025]  </TASK>

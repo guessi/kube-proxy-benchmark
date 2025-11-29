@@ -1,3 +1,5 @@
+# elapsed less than 1m will not be listed
+
 kernel-6.12.46, m5.4xlarge
 I1015 12:31:11.235732       1 proxier.go:1794] "Reloading service nftables data" ipFamily="IPv4" numServices=8006 numEndpoints=240015
 I1015 12:35:54.334108       1 proxier.go:1168] "SyncProxyRules complete" ipFamily="IPv4" elapsed="4m50.461347544s"

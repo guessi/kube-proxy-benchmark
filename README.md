@@ -4,9 +4,9 @@ Performance testing to compare Linux kernel version impact on kube-proxy `nftabl
 
 ## Overview
 
-This repository benchmarks kube-proxy performance in `nftables` mode across different Linux kernel versions. The test compares sync rule processing times between kernel versions `6.1.144` and `6.12.46`.
+This repository benchmarks kube-proxy performance in `nftables` mode across different Linux kernel versions. The test compares sync rule processing times between kernel versions `6.1.144` and `6.12.55`.
 
-**Test Result**: Kernel `6.12.46` shows **73% faster** performance compared to `6.1.144` in this benchmark.
+**Test Result**: Kernel `6.12.55` shows **77% faster** performance compared to `6.1.144` in this benchmark.
 
 ## Prerequisites
 
@@ -27,11 +27,12 @@ eksctl create cluster -f cluster/clusterConfig.yaml
 ```
 
 This creates:
-- EKS cluster with Kubernetes v1.34
+
+- EKS cluster with Kubernetes v1.33
 - Two Bottlerocket-based nodes:
-  - `m5.4xlarge` × 1 (kernel `v6.1.144`)
-  - `m5.4xlarge` × 1 (kernel `v6.12.46`)
-- `kube-proxy` version `v1.32.6-eksbuild.12` in `nftables` mode
+  - `m6i.8xlarge` × 1 (kernel `v6.1.144`)
+  - `m6i.8xlarge` × 1 (kernel `v6.12.55`)
+- `kube-proxy` version `v1.33.5-eksbuild.2` in `nftables` mode
 
 ### Verify Cluster
 
@@ -47,10 +48,10 @@ kubectl get pods -n kube-system
 
 This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule synchronization:
 
-1. **Service Creation**: Create `8,000 services` incrementally (100 to 8,000)
+1. **Service Creation**: Create `8,000 services` incrementally (100 to 5,000)
 2. **Service Configuration**: Each service targets the same nginx deployment
 3. **Stabilization**: Wait `300 seconds` for service processing to complete
-4. **Trigger Event**: Scale deployment from `1` to `30` replicas incrementally (60 seconds between each step)
+4. **Trigger Event**: Scale deployment from `10` to `50` replicas incrementally (30 seconds between each step)
 5. **Measurement**: Measure kube-proxy `nftables` rule synchronization time
 
 ## Quick Start
@@ -65,7 +66,7 @@ This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule
 
 - Creates a `debug` namespace
 - Deploys nginx with `1` replica (initial state)
-- Creates `8,000` services incrementally
+- Creates `5,000` services incrementally
 
 ### Step 2: Increase Load (Trigger Performance Test)
 
@@ -75,7 +76,7 @@ This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule
 
 **What this script does:**
 
-- Scales deployment from `1 (initial state)` to `5`, to `30` replicas incrementally (triggers the performance test)
+- Scales deployment from `1 (initial state)` to `5`, to `50` replicas incrementally (triggers the performance test)
 
 ### Step 3: Monitor Performance Logs
 
@@ -102,36 +103,24 @@ kubectl logs -n kube-system -f <KUBE_PROXY_POD_NAME>
 ### Test Configuration
 
 - **Operating System**: `Bottlerocket`
-- **Instance Type**: `m5.4xlarge`
-- **kube-proxy Version**: `v1.32.6-eksbuild.12`
-- **Services**: `8,000`
-- **Replicas per Service**: `30`
-- **Total Endpoints**: `240,000`
+- **Instance Type**: `m6i.8xlarge`
+- **kube-proxy Version**: `v1.33.5-eksbuild.2`
+- **Services**: `5,000`
+- **Replicas per Service**: `50`
+- **Total Endpoints**: `250,000`
 
 ### Results Summary
 
-| Kernel Version | Instance   | Sync Duration | Average      |
-|----------------|------------|---------------|--------------|
-| `6.12.46`      | m5.4xlarge | 4m 50.5s      | **4m 0.1s**  |
-| `6.12.46`      | m5.4xlarge | 5m 34.1s      |              |
-| `6.12.46`      | m5.4xlarge | 1m 22.0s      |              |
-| `6.12.46`      | m5.4xlarge | 4m 54.4s      |              |
-| `6.1.144`      | m5.4xlarge | 16m 31.5s     | **15m 0.1s** |
-| `6.1.144`      | m5.4xlarge | 12m 47.4s     |              |
-| `6.1.144`      | m5.4xlarge | 12m 12.1s     |              |
-| `6.1.144`      | m5.4xlarge | 15m 26.2s     |              |
-| `6.1.144`      | m5.4xlarge | 19m 3.5s      |              |
+**Performance Improvement**: Kernel `6.12.55` is **77% faster** than `6.1.144` (2m 12s vs 9m 27s average)
 
-**Performance Improvement**: Kernel `6.12.46` is **73% faster** than `6.1.144` (4m 0s vs 15m 0s average)
-
-> **The tests were performed on Oct 15, 2025**
+> **The tests were performed on Nov 29, 2025**
 
 ## Key Findings
 
 ### Performance Impact
 
-- **Performance Difference**: Kernel `6.12.46` reduces `nftables` rule synchronization time by **73%** in this test
-- **Scale Impact**: The performance difference becomes more pronounced at scale (240,000 endpoints)
+- **Performance Difference**: Kernel `6.12.55` reduces `nftables` rule synchronization time by **77%** in this test
+- **Scale Impact**: The performance difference becomes more pronounced at scale (250,000 endpoints)
 - **Observed Results**: In this benchmark, newer kernel versions show performance differences for large Kubernetes clusters
 
 ## Technical Details
@@ -141,6 +130,26 @@ kubectl logs -n kube-system -f <KUBE_PROXY_POD_NAME>
 - **Target**: kube-proxy's `nftables` mode (default for modern Kubernetes)
 - **Focus**: `SyncProxyRules` operation (used for service discovery)
 - **Scope**: Large-scale service configurations
+
+### Observed Kernel Behavior
+
+During testing, both kernels experienced "soft lockups" - situations where the CPU gets stuck processing for an extended time without responding to other tasks. System logs reveal significant differences:
+
+- **Kernel 6.1.144**: CPU stuck for up to **701 seconds (11m 41s)** with 200 lockup events
+- **Kernel 6.12.55**: CPU stuck for up to **104 seconds (1m 44s)** with 13 lockup events
+
+**What causes the lockup?**
+
+When kube-proxy updates firewall rules for 250,000+ endpoints, the kernel
+needs to:
+
+1. Search through existing firewall rule sets to find the right ones
+2. Link new rules to those sets
+
+On kernel 6.1.144, the search operation is very slow - the CPU spends most of
+its time looking through rules. On kernel 6.12.55, this search is much faster,
+resulting in 6.7x shorter lockup times. This improvement directly explains the
+77% better overall performance.
 
 ### Important Considerations
 
@@ -152,7 +161,7 @@ kubectl logs -n kube-system -f <KUBE_PROXY_POD_NAME>
 
 This benchmark has several important limitations:
 
-- **Hardware Specific**: Tests conducted on `m5.4xlarge` instances
-- **Kernel Specific**: Results apply to tested versions (`6.1.144` vs `6.12.46`)
+- **Hardware Specific**: Tests conducted on `m6i.8xlarge` instances
+- **Kernel Specific**: Results apply to tested versions (`6.1.144` vs `6.12.55`)
 - **Scale Specific**: Performance improvements may vary with different cluster sizes
 - **Workload Specific**: Results based on specific service/endpoint patterns

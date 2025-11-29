@@ -1,0 +1,649 @@
+] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3403.770606] watchdog: BUG: soft lockup - CPU#10 stuck for 109s! [nft:97423]
+[ 3404.724110] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 105820 ms
+[ 3404.725532] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 112480000 usec. napi scheduled: 1. msecs since last interrupt: 112430
+[ 3404.727988] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3409.684198] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 110780 ms
+[ 3409.685614] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 117440000 usec. napi scheduled: 1. msecs since last interrupt: 117390
+[ 3409.688085] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3414.724285] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 115820 ms
+[ 3414.725703] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 122480000 usec. napi scheduled: 1. msecs since last interrupt: 122430
+[ 3414.728171] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3419.684371] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 120780 ms
+[ 3419.685784] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 127440000 usec. napi scheduled: 1. msecs since last interrupt: 127390
+[ 3419.688249] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3424.724460] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 125820 ms
+[ 3424.725869] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 132480000 usec. napi scheduled: 1. msecs since last interrupt: 132430
+[ 3424.728333] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3429.684547] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 130780 ms
+[ 3429.685950] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 137440000 usec. napi scheduled: 1. msecs since last interrupt: 137390
+[ 3429.688408] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3431.771097] watchdog: BUG: soft lockup - CPU#10 stuck for 135s! [nft:97423]
+[ 3434.724639] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 135820 ms
+[ 3434.726056] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 142480000 usec. napi scheduled: 1. msecs since last interrupt: 142430
+[ 3434.728498] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3438.324703] INFO: task systemd:1 blocked for more than 122 seconds.
+[ 3438.325769]       Tainted: G             L     6.1.144 #1
+[ 3438.326607] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.327814] INFO: task khugepaged:216 blocked for more than 122 seconds.
+[ 3438.328777]       Tainted: G             L     6.1.144 #1
+[ 3438.329560] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.330741] INFO: task systemd-journal:791 blocked for more than 122 seconds.
+[ 3438.331757]       Tainted: G             L     6.1.144 #1
+[ 3438.332551] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.333753] INFO: task kubelet:4019 blocked for more than 122 seconds.
+[ 3438.334720]       Tainted: G             L     6.1.144 #1
+[ 3438.335490] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.336652] INFO: task kubelet:4021 blocked for more than 122 seconds.
+[ 3438.337574]       Tainted: G             L     6.1.144 #1
+[ 3438.338354] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.339580] INFO: task kworker/u64:11:61345 blocked for more than 122 seconds.
+[ 3438.340610]       Tainted: G             L     6.1.144 #1
+[ 3438.341387] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.342556] INFO: task kworker/u64:9:77945 blocked for more than 122 seconds.
+[ 3438.343564]       Tainted: G             L     6.1.144 #1
+[ 3438.344327] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.345478] INFO: task kworker/11:3:79427 blocked for more than 122 seconds.
+[ 3438.346469]       Tainted: G             L     6.1.144 #1
+[ 3438.347234] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.348519] INFO: task aws-cni:97550 blocked for more than 122 seconds.
+[ 3438.349442]       Tainted: G             L     6.1.144 #1
+[ 3438.350201] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3438.351389] INFO: task runc:97807 blocked for more than 122 seconds.
+[ 3438.352275]       Tainted: G             L     6.1.144 #1
+[ 3438.353030] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 3439.684722] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 140780 ms
+[ 3439.686081] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 147440000 usec. napi scheduled: 1. msecs since last interrupt: 147390
+[ 3439.688464] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3444.724812] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 145820 ms
+[ 3444.726181] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 152480000 usec. napi scheduled: 1. msecs since last interrupt: 152430
+[ 3444.728569] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3449.684898] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 150780 ms
+[ 3449.686271] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 157440000 usec. napi scheduled: 1. msecs since last interrupt: 157390
+[ 3449.688690] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3454.724988] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 155820 ms
+[ 3454.726380] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 162480000 usec. napi scheduled: 1. msecs since last interrupt: 162430
+[ 3454.728786] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3459.685074] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 160780 ms
+[ 3459.686473] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 167440000 usec. napi scheduled: 1. msecs since last interrupt: 167390
+[ 3459.688904] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3459.771589] watchdog: BUG: soft lockup - CPU#10 stuck for 161s! [nft:97423]
+[ 3464.725163] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 165820 ms
+[ 3464.726565] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 172480000 usec. napi scheduled: 1. msecs since last interrupt: 172430
+[ 3464.728994] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3469.685250] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 170780 ms
+[ 3469.686646] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 177440000 usec. napi scheduled: 1. msecs since last interrupt: 177390
+[ 3469.689096] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3474.725338] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 175820 ms
+[ 3474.726734] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 182480000 usec. napi scheduled: 1. msecs since last interrupt: 182430
+[ 3474.729178] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3479.685426] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 180780 ms
+[ 3479.686845] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 187440000 usec. napi scheduled: 1. msecs since last interrupt: 187390
+[ 3479.689301] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3484.725514] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 185820 ms
+[ 3484.726921] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 192480000 usec. napi scheduled: 1. msecs since last interrupt: 192430
+[ 3484.729377] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3487.772081] watchdog: BUG: soft lockup - CPU#10 stuck for 187s! [nft:97423]
+[ 3489.685600] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 190780 ms
+[ 3489.686996] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 197440000 usec. napi scheduled: 1. msecs since last interrupt: 197390
+[ 3489.689456] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3494.725688] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 195820 ms
+[ 3494.727091] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 202480000 usec. napi scheduled: 1. msecs since last interrupt: 202430
+[ 3494.729553] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3499.685776] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 200780 ms
+[ 3499.687176] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 207440000 usec. napi scheduled: 1. msecs since last interrupt: 207390
+[ 3499.689694] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3504.725865] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 205820 ms
+[ 3504.727289] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 212480000 usec. napi scheduled: 1. msecs since last interrupt: 212430
+[ 3504.729749] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3509.685951] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 210780 ms
+[ 3509.687355] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 217440000 usec. napi scheduled: 1. msecs since last interrupt: 217390
+[ 3509.689806] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3514.726041] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 215820 ms
+[ 3514.727443] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 222480000 usec. napi scheduled: 1. msecs since last interrupt: 222430
+[ 3514.729896] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3515.772572] watchdog: BUG: soft lockup - CPU#10 stuck for 213s! [nft:97423]
+[ 3519.686127] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 220780 ms
+[ 3519.687543] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 227440000 usec. napi scheduled: 1. msecs since last interrupt: 227390
+[ 3519.689993] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3524.726216] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 225820 ms
+[ 3524.727623] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 232480000 usec. napi scheduled: 1. msecs since last interrupt: 232430
+[ 3524.730084] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3528.366270] rcu: INFO: rcu_preempt self-detected stall on CPU
+[ 3528.367275] rcu: 	10-....: (1 GPs behind) idle=ad54/1/0x4000000000000000 softirq=40471/40472 fqs=11795
+[ 3529.686301] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 230780 ms
+[ 3529.687705] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 237440000 usec. napi scheduled: 1. msecs since last interrupt: 237390
+[ 3529.690154] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3534.726391] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 235820 ms
+[ 3534.727794] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 242480000 usec. napi scheduled: 1. msecs since last interrupt: 242430
+[ 3534.730253] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3539.686478] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 240780 ms
+[ 3539.687899] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 247440000 usec. napi scheduled: 1. msecs since last interrupt: 247390
+[ 3539.690359] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3544.726566] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 245820 ms
+[ 3544.727981] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 252480000 usec. napi scheduled: 1. msecs since last interrupt: 252430
+[ 3544.730425] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3549.686654] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 250780 ms
+[ 3549.688064] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 257440000 usec. napi scheduled: 1. msecs since last interrupt: 257390
+[ 3549.690515] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3554.726741] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 255820 ms
+[ 3554.728145] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 262480000 usec. napi scheduled: 1. msecs since last interrupt: 262430
+[ 3554.730604] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3555.773274] watchdog: BUG: soft lockup - CPU#10 stuck for 250s! [nft:97423]
+[ 3559.686829] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 260780 ms
+[ 3559.688226] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 267440000 usec. napi scheduled: 1. msecs since last interrupt: 267390
+[ 3559.690671] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3564.726916] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 265820 ms
+[ 3564.728323] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 272480000 usec. napi scheduled: 1. msecs since last interrupt: 272430
+[ 3564.730787] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3569.687004] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 270780 ms
+[ 3569.688415] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 277440000 usec. napi scheduled: 1. msecs since last interrupt: 277390
+[ 3569.690860] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3574.727094] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 275820 ms
+[ 3574.728503] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 282480000 usec. napi scheduled: 1. msecs since last interrupt: 282430
+[ 3574.730974] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3579.687181] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 280780 ms
+[ 3579.688584] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 287440000 usec. napi scheduled: 1. msecs since last interrupt: 287390
+[ 3579.691032] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3583.773766] watchdog: BUG: soft lockup - CPU#10 stuck for 276s! [nft:97423]
+[ 3584.727269] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 285820 ms
+[ 3584.728676] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 292480000 usec. napi scheduled: 1. msecs since last interrupt: 292430
+[ 3584.731135] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3589.687355] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 290780 ms
+[ 3589.688758] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 297440000 usec. napi scheduled: 1. msecs since last interrupt: 297390
+[ 3589.691205] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3594.727445] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 295820 ms
+[ 3594.728838] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 302480000 usec. napi scheduled: 1. msecs since last interrupt: 302430
+[ 3594.731286] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3599.687532] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 300780 ms
+[ 3599.688936] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 307440000 usec. napi scheduled: 1. msecs since last interrupt: 307390
+[ 3599.691398] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3604.727621] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 305820 ms
+[ 3604.729030] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 312480000 usec. napi scheduled: 1. msecs since last interrupt: 312430
+[ 3604.731494] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3609.687707] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 310780 ms
+[ 3609.689117] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 317440000 usec. napi scheduled: 1. msecs since last interrupt: 317390
+[ 3609.691560] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3611.774256] watchdog: BUG: soft lockup - CPU#10 stuck for 302s! [nft:97423]
+[ 3614.727794] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 315820 ms
+[ 3614.729187] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 322480000 usec. napi scheduled: 1. msecs since last interrupt: 322430
+[ 3614.731628] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3619.687881] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 320780 ms
+[ 3619.689279] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 327440000 usec. napi scheduled: 1. msecs since last interrupt: 327390
+[ 3619.691761] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3624.727969] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 325820 ms
+[ 3624.729370] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 332480000 usec. napi scheduled: 1. msecs since last interrupt: 332430
+[ 3624.731828] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3629.688057] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 330780 ms
+[ 3629.689461] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 337440000 usec. napi scheduled: 1. msecs since last interrupt: 337390
+[ 3629.691923] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3634.728144] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 335820 ms
+[ 3634.729549] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 342480000 usec. napi scheduled: 1. msecs since last interrupt: 342430
+[ 3634.732005] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3639.688233] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 340780 ms
+[ 3639.689639] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 347440000 usec. napi scheduled: 1. msecs since last interrupt: 347390
+[ 3639.692102] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3639.774749] watchdog: BUG: soft lockup - CPU#10 stuck for 328s! [nft:97423]
+[ 3644.728321] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 345820 ms
+[ 3644.729720] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 352480000 usec. napi scheduled: 1. msecs since last interrupt: 352430
+[ 3644.732165] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3649.688408] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 350780 ms
+[ 3649.689818] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 357440000 usec. napi scheduled: 1. msecs since last interrupt: 357390
+[ 3649.692271] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3654.728497] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 355820 ms
+[ 3654.729906] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 362480000 usec. napi scheduled: 1. msecs since last interrupt: 362430
+[ 3654.732366] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3659.688583] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 360780 ms
+[ 3659.689983] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 367440000 usec. napi scheduled: 1. msecs since last interrupt: 367390
+[ 3659.692452] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3664.728673] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 365820 ms
+[ 3664.730075] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 372480000 usec. napi scheduled: 1. msecs since last interrupt: 372430
+[ 3664.732537] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3667.775240] watchdog: BUG: soft lockup - CPU#10 stuck for 354s! [nft:97423]
+[ 3669.688759] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 370780 ms
+[ 3669.690151] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 377440000 usec. napi scheduled: 1. msecs since last interrupt: 377390
+[ 3669.692590] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3674.728848] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 375820 ms
+[ 3674.730249] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 382480000 usec. napi scheduled: 1. msecs since last interrupt: 382430
+[ 3674.732696] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3679.688935] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 380780 ms
+[ 3679.690341] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 387440000 usec. napi scheduled: 1. msecs since last interrupt: 387390
+[ 3679.692810] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3684.729024] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 385820 ms
+[ 3684.730437] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 392480000 usec. napi scheduled: 1. msecs since last interrupt: 392430
+[ 3684.732885] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3689.689110] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 390780 ms
+[ 3689.690520] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 397440000 usec. napi scheduled: 1. msecs since last interrupt: 397390
+[ 3689.692969] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3694.729199] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 395820 ms
+[ 3694.730595] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 402480000 usec. napi scheduled: 1. msecs since last interrupt: 402430
+[ 3694.733053] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3695.775731] watchdog: BUG: soft lockup - CPU#10 stuck for 380s! [nft:97423]
+[ 3699.689286] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 400780 ms
+[ 3699.690711] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 407440000 usec. napi scheduled: 1. msecs since last interrupt: 407390
+[ 3699.693165] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3704.729375] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 405820 ms
+[ 3704.730785] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 412480000 usec. napi scheduled: 1. msecs since last interrupt: 412430
+[ 3704.733239] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3705.399375] rcu: INFO: rcu_preempt self-detected stall on CPU
+[ 3705.400361] rcu: 	10-....: (1 GPs behind) idle=ad54/1/0x4000000000000000 softirq=40471/40472 fqs=20642
+[ 3709.689461] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 410780 ms
+[ 3709.690871] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 417440000 usec. napi scheduled: 1. msecs since last interrupt: 417390
+[ 3709.693318] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3714.729551] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 415820 ms
+[ 3714.730958] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 422480000 usec. napi scheduled: 1. msecs since last interrupt: 422430
+[ 3714.733419] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3719.689637] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 420780 ms
+[ 3719.691040] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 427440000 usec. napi scheduled: 1. msecs since last interrupt: 427390
+[ 3719.693494] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3724.729726] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 4 timed out 425820 ms
+[ 3724.731141] ena 0000:00:05.0 eth0: TX q 4 is paused for too long (threshold 5000000). Time since last napi 432480000 usec. napi scheduled: 1. msecs since last interrupt: 432430
+[ 3724.733608] ena 0000:00:05.0 eth0: napi handler hasn't been called for a long time but is scheduled
+[ 3726.729761] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 5120 ms
+[ 3726.731136] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 425230000 usec. napi scheduled: 0. msecs since last interrupt: 416770
+[ 3731.689848] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 10080 ms
+[ 3731.691266] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 430190000 usec. napi scheduled: 0. msecs since last interrupt: 421730
+[ 3731.776363] watchdog: BUG: soft lockup - CPU#10 stuck for 414s! [nft:97423]
+[ 3736.729936] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 15120 ms
+[ 3736.731332] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 435230000 usec. napi scheduled: 0. msecs since last interrupt: 426770
+[ 3741.690023] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 20080 ms
+[ 3741.692304] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 440190000 usec. napi scheduled: 0. msecs since last interrupt: 431730
+[ 3746.730111] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 25120 ms
+[ 3746.731512] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 445230000 usec. napi scheduled: 0. msecs since last interrupt: 436770
+[ 3751.690198] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 30080 ms
+[ 3751.691597] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 450190000 usec. napi scheduled: 0. msecs since last interrupt: 441730
+[ 3756.730288] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 35120 ms
+[ 3756.731691] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 455230000 usec. napi scheduled: 0. msecs since last interrupt: 446770
+[ 3759.776855] watchdog: BUG: soft lockup - CPU#10 stuck for 440s! [nft:97423]
+[ 3761.690374] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 40080 ms
+[ 3761.691756] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 460190000 usec. napi scheduled: 0. msecs since last interrupt: 451730
+[ 3766.730463] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 45120 ms
+[ 3766.731850] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 465230000 usec. napi scheduled: 0. msecs since last interrupt: 456770
+[ 3771.690549] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 50080 ms
+[ 3771.691938] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 470190000 usec. napi scheduled: 0. msecs since last interrupt: 461730
+[ 3776.730638] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 55120 ms
+[ 3776.732031] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 475230000 usec. napi scheduled: 0. msecs since last interrupt: 466770
+[ 3781.690725] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 60080 ms
+[ 3781.692103] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 480190000 usec. napi scheduled: 0. msecs since last interrupt: 471730
+[ 3786.730813] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 65120 ms
+[ 3786.732183] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 485230000 usec. napi scheduled: 0. msecs since last interrupt: 476770
+[ 3787.777346] watchdog: BUG: soft lockup - CPU#10 stuck for 466s! [nft:97423]
+[ 3791.690900] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 70080 ms
+[ 3791.692293] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 490190000 usec. napi scheduled: 0. msecs since last interrupt: 481730
+[ 3796.730989] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 75120 ms
+[ 3796.732359] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 495230000 usec. napi scheduled: 0. msecs since last interrupt: 486770
+[ 3801.691077] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 80080 ms
+[ 3801.693822] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 500190000 usec. napi scheduled: 0. msecs since last interrupt: 491730
+[ 3806.731165] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 85120 ms
+[ 3806.732561] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 505230000 usec. napi scheduled: 0. msecs since last interrupt: 496770
+[ 3811.691253] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 90080 ms
+[ 3811.692625] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 510190000 usec. napi scheduled: 0. msecs since last interrupt: 501730
+[ 3815.777838] watchdog: BUG: soft lockup - CPU#10 stuck for 492s! [nft:97423]
+[ 3816.731340] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 95120 ms
+[ 3816.732723] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 515230000 usec. napi scheduled: 0. msecs since last interrupt: 506770
+[ 3821.691426] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 100080 ms
+[ 3821.692803] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 520190000 usec. napi scheduled: 0. msecs since last interrupt: 511730
+[ 3826.731515] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 105120 ms
+[ 3826.732900] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 525230000 usec. napi scheduled: 0. msecs since last interrupt: 516770
+[ 3831.691601] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 110080 ms
+[ 3831.692976] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 530190000 usec. napi scheduled: 0. msecs since last interrupt: 521730
+[ 3836.731691] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 115120 ms
+[ 3836.733080] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 535230000 usec. napi scheduled: 0. msecs since last interrupt: 526770
+[ 3841.691781] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 120080 ms
+[ 3841.693160] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 540190000 usec. napi scheduled: 0. msecs since last interrupt: 531730
+[ 3843.778329] watchdog: BUG: soft lockup - CPU#10 stuck for 518s! [nft:97423]
+[ 3846.731868] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 125120 ms
+[ 3846.733260] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 545230000 usec. napi scheduled: 0. msecs since last interrupt: 536770
+[ 3851.691954] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 130080 ms
+[ 3851.693349] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 550190000 usec. napi scheduled: 0. msecs since last interrupt: 541730
+[ 3856.732042] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 135120 ms
+[ 3856.733439] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 555230000 usec. napi scheduled: 0. msecs since last interrupt: 546770
+[ 3861.692129] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 140080 ms
+[ 3861.695392] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 560190000 usec. napi scheduled: 0. msecs since last interrupt: 551730
+[ 3866.732219] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 145120 ms
+[ 3866.733591] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 565230000 usec. napi scheduled: 0. msecs since last interrupt: 556770
+[ 3871.692305] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 150080 ms
+[ 3871.693704] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 570190000 usec. napi scheduled: 0. msecs since last interrupt: 561730
+[ 3871.778820] watchdog: BUG: soft lockup - CPU#10 stuck for 544s! [nft:97423]
+[ 3876.732393] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 155120 ms
+[ 3876.733795] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 575230000 usec. napi scheduled: 0. msecs since last interrupt: 566770
+[ 3881.692480] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 160080 ms
+[ 3881.693890] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 580190000 usec. napi scheduled: 0. msecs since last interrupt: 571730
+[ 3882.432481] rcu: INFO: rcu_preempt self-detected stall on CPU
+[ 3882.433445] rcu: 	10-....: (1 GPs behind) idle=ad54/1/0x4000000000000000 softirq=40471/40472 fqs=29491
+[ 3886.732569] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 165120 ms
+[ 3886.733972] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 585230000 usec. napi scheduled: 0. msecs since last interrupt: 576770
+[ 3891.692657] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 170080 ms
+[ 3891.694061] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 590190000 usec. napi scheduled: 0. msecs since last interrupt: 581730
+[ 3896.732744] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 175120 ms
+[ 3896.734134] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 595230000 usec. napi scheduled: 0. msecs since last interrupt: 586770
+[ 3901.692830] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 180080 ms
+[ 3901.694237] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 600190000 usec. napi scheduled: 0. msecs since last interrupt: 591730
+[ 3906.732921] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 185120 ms
+[ 3906.734321] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 605230000 usec. napi scheduled: 0. msecs since last interrupt: 596770
+[ 3907.779453] watchdog: BUG: soft lockup - CPU#10 stuck for 578s! [nft:97423]
+[ 3911.693007] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 190080 ms
+[ 3911.694392] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 610190000 usec. napi scheduled: 0. msecs since last interrupt: 601730
+[ 3916.733095] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 195120 ms
+[ 3916.734477] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 615230000 usec. napi scheduled: 0. msecs since last interrupt: 606770
+[ 3921.693182] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 200080 ms
+[ 3921.696980] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 620190000 usec. napi scheduled: 0. msecs since last interrupt: 611730
+[ 3926.733270] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 205120 ms
+[ 3926.734665] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 625230000 usec. napi scheduled: 0. msecs since last interrupt: 616770
+[ 3931.693358] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 210080 ms
+[ 3931.694751] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 630190000 usec. napi scheduled: 0. msecs since last interrupt: 621730
+[ 3935.779944] watchdog: BUG: soft lockup - CPU#10 stuck for 604s! [nft:97423]
+[ 3936.733447] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 215120 ms
+[ 3936.734839] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 635230000 usec. napi scheduled: 0. msecs since last interrupt: 626770
+[ 3941.693532] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 220080 ms
+[ 3941.694923] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 640190000 usec. napi scheduled: 0. msecs since last interrupt: 631730
+[ 3946.733622] ena 0000:00:05.0 eth0: NETDEV WATCHDOG: CPU: 5: transmit queue 3 timed out 225120 ms
+[ 3946.735016] ena 0000:00:05.0 eth0: TX q 3 is paused for too long (threshold 5000000). Time since last napi 645230000 usec. napi scheduled: 0. msecs since last interrupt: 636770
+[ 3949.540482] ena 0000:00:05.0: Device reset completed, status: 0, Driver info: Elastic Network Adapter (ENA) v2.14.1g
+[ 3949.540482] 
+[ 8107.853221] watchdog: BUG: soft lockup - CPU#2 stuck for 23s! [nft:137341]
+[ 8135.853713] watchdog: BUG: soft lockup - CPU#2 stuck for 49s! [nft:137341]
+[ 8163.854204] watchdog: BUG: soft lockup - CPU#2 stuck for 75s! [nft:137341]
+[ 8191.854696] watchdog: BUG: soft lockup - CPU#2 stuck for 101s! [nft:137341]
+[ 8219.855188] watchdog: BUG: soft lockup - CPU#2 stuck for 127s! [nft:137341]
+[ 8247.855679] watchdog: BUG: soft lockup - CPU#2 stuck for 153s! [nft:137341]
+[ 8275.856170] watchdog: BUG: soft lockup - CPU#2 stuck for 179s! [nft:137341]
+[ 8303.856662] watchdog: BUG: soft lockup - CPU#2 stuck for 205s! [nft:137341]
+[ 8331.857154] watchdog: BUG: soft lockup - CPU#2 stuck for 231s! [nft:137341]
+[ 8359.857645] watchdog: BUG: soft lockup - CPU#2 stuck for 257s! [nft:137341]
+[ 8387.858136] watchdog: BUG: soft lockup - CPU#2 stuck for 283s! [nft:137341]
+[ 8415.858628] watchdog: BUG: soft lockup - CPU#2 stuck for 309s! [nft:137341]
+[ 8443.859119] watchdog: BUG: soft lockup - CPU#2 stuck for 335s! [nft:137341]
+[ 8471.859610] watchdog: BUG: soft lockup - CPU#2 stuck for 362s! [nft:137341]
+[ 8499.860102] watchdog: BUG: soft lockup - CPU#2 stuck for 388s! [nft:137341]
+[ 8527.860595] watchdog: BUG: soft lockup - CPU#2 stuck for 414s! [nft:137341]
+[ 8555.861085] watchdog: BUG: soft lockup - CPU#2 stuck for 440s! [nft:137341]
+[ 8583.861577] watchdog: BUG: soft lockup - CPU#2 stuck for 466s! [nft:137341]
+[ 8611.862068] watchdog: BUG: soft lockup - CPU#2 stuck for 492s! [nft:137341]
+[ 8639.862560] watchdog: BUG: soft lockup - CPU#2 stuck for 518s! [nft:137341]
+[ 8667.863051] watchdog: BUG: soft lockup - CPU#2 stuck for 544s! [nft:137341]
+[ 8695.863543] watchdog: BUG: soft lockup - CPU#2 stuck for 570s! [nft:137341]
+[ 8712.211036] systemd[1]: Failed to start Journal Service.
+[ 8723.864033] watchdog: BUG: soft lockup - CPU#2 stuck for 596s! [nft:137341]
+[ 8751.864526] watchdog: BUG: soft lockup - CPU#2 stuck for 622s! [nft:137341]
+[ 8779.865017] watchdog: BUG: soft lockup - CPU#2 stuck for 648s! [nft:137341]
+[ 8807.865508] watchdog: BUG: soft lockup - CPU#2 stuck for 674s! [nft:137341]
+[ 8835.866000] watchdog: BUG: soft lockup - CPU#2 stuck for 701s! [nft:137341]
+[ 8843.463360] systemd[1]: Failed to start Journal Service.
+[ 9743.891940] watchdog: BUG: soft lockup - CPU#17 stuck for 26s! [nft:160354]
+[ 9771.892432] watchdog: BUG: soft lockup - CPU#17 stuck for 52s! [nft:160354]
+[ 9799.892923] watchdog: BUG: soft lockup - CPU#17 stuck for 78s! [nft:160354]
+[ 9827.893415] watchdog: BUG: soft lockup - CPU#17 stuck for 104s! [nft:160354]
+[ 9855.893907] watchdog: BUG: soft lockup - CPU#17 stuck for 131s! [nft:160354]
+[ 9883.894398] watchdog: BUG: soft lockup - CPU#17 stuck for 157s! [nft:160354]
+[ 9955.895662] watchdog: BUG: soft lockup - CPU#23 stuck for 23s! [nft:161469]
+[ 9983.896154] watchdog: BUG: soft lockup - CPU#23 stuck for 49s! [nft:161469]
+[10011.896645] watchdog: BUG: soft lockup - CPU#23 stuck for 75s! [nft:161469]
+[10039.897137] watchdog: BUG: soft lockup - CPU#23 stuck for 101s! [nft:161469]
+[10067.897629] watchdog: BUG: soft lockup - CPU#23 stuck for 127s! [nft:161469]
+[10095.898120] watchdog: BUG: soft lockup - CPU#23 stuck for 153s! [nft:161469]
+[10123.898612] watchdog: BUG: soft lockup - CPU#23 stuck for 179s! [nft:161469]
+[10151.899104] watchdog: BUG: soft lockup - CPU#23 stuck for 205s! [nft:161469]
+[10179.899595] watchdog: BUG: soft lockup - CPU#23 stuck for 231s! [nft:161469]
+[10207.900087] watchdog: BUG: soft lockup - CPU#23 stuck for 257s! [nft:161469]
+[10235.900579] watchdog: BUG: soft lockup - CPU#23 stuck for 283s! [nft:161469]
+[10263.901071] watchdog: BUG: soft lockup - CPU#23 stuck for 310s! [nft:161469]
+[10291.901562] watchdog: BUG: soft lockup - CPU#23 stuck for 336s! [nft:161469]
+[10319.902054] watchdog: BUG: soft lockup - CPU#23 stuck for 362s! [nft:161469]
+[10347.902545] watchdog: BUG: soft lockup - CPU#23 stuck for 388s! [nft:161469]
+[10375.903037] watchdog: BUG: soft lockup - CPU#23 stuck for 414s! [nft:161469]
+[10403.903528] watchdog: BUG: soft lockup - CPU#23 stuck for 440s! [nft:161469]
+[10431.904021] watchdog: BUG: soft lockup - CPU#23 stuck for 466s! [nft:161469]
+[10459.904512] watchdog: BUG: soft lockup - CPU#23 stuck for 492s! [nft:161469]
+[10487.905004] watchdog: BUG: soft lockup - CPU#23 stuck for 518s! [nft:161469]
+[10515.905495] watchdog: BUG: soft lockup - CPU#23 stuck for 544s! [nft:161469]
+[10543.905987] watchdog: BUG: soft lockup - CPU#23 stuck for 570s! [nft:161469]
+[10546.743243] systemd[1]: Failed to start Journal Service.
+[10571.906479] watchdog: BUG: soft lockup - CPU#23 stuck for 596s! [nft:161469]
+[10599.906970] watchdog: BUG: soft lockup - CPU#23 stuck for 622s! [nft:161469]
+[10675.908305] watchdog: BUG: soft lockup - CPU#22 stuck for 26s! [nft:177637]
+[10703.908796] watchdog: BUG: soft lockup - CPU#22 stuck for 52s! [nft:177637]
+[10711.132399] rcu: INFO: rcu_preempt self-detected stall on CPU
+[10711.133206] rcu: 	22-....: (5939 ticks this GP) idle=83bc/1/0x4000000000000000 softirq=73809/73811 fqs=2946
+[10735.909359] watchdog: BUG: soft lockup - CPU#22 stuck for 82s! [nft:177637]
+[10763.909851] watchdog: BUG: soft lockup - CPU#22 stuck for 108s! [nft:177637]
+[10791.910343] watchdog: BUG: soft lockup - CPU#22 stuck for 134s! [nft:177637]
+[10819.910834] watchdog: BUG: soft lockup - CPU#22 stuck for 160s! [nft:177637]
+[10847.911326] watchdog: BUG: soft lockup - CPU#22 stuck for 186s! [nft:177637]
+[10875.911818] watchdog: BUG: soft lockup - CPU#22 stuck for 212s! [nft:177637]
+[10888.165508] rcu: INFO: rcu_preempt self-detected stall on CPU
+[10888.166332] rcu: 	22-....: (23642 ticks this GP) idle=83bc/1/0x4000000000000000 softirq=73809/73811 fqs=11791
+[10915.912520] watchdog: BUG: soft lockup - CPU#22 stuck for 250s! [nft:177637]
+[10943.913011] watchdog: BUG: soft lockup - CPU#22 stuck for 276s! [nft:177637]
+[10971.913503] watchdog: BUG: soft lockup - CPU#22 stuck for 302s! [nft:177637]
+[10999.913995] watchdog: BUG: soft lockup - CPU#22 stuck for 328s! [nft:177637]
+[11027.914486] watchdog: BUG: soft lockup - CPU#22 stuck for 354s! [nft:177637]
+[11055.914978] watchdog: BUG: soft lockup - CPU#22 stuck for 380s! [nft:177637]
+[11065.198617] rcu: INFO: rcu_preempt self-detected stall on CPU
+[11065.199459] rcu: 	22-....: (41345 ticks this GP) idle=83bc/1/0x4000000000000000 softirq=73809/73811 fqs=20639
+[11151.916664] watchdog: BUG: soft lockup - CPU#14 stuck for 23s! [nft:179470]
+[11179.917156] watchdog: BUG: soft lockup - CPU#14 stuck for 49s! [nft:179470]
+[11207.917648] watchdog: BUG: soft lockup - CPU#14 stuck for 75s! [nft:179470]
+[11235.918140] watchdog: BUG: soft lockup - CPU#14 stuck for 101s! [nft:179470]
+[11263.918631] watchdog: BUG: soft lockup - CPU#14 stuck for 127s! [nft:179470]
+[11291.919122] watchdog: BUG: soft lockup - CPU#14 stuck for 153s! [nft:179470]
+[11319.919614] watchdog: BUG: soft lockup - CPU#14 stuck for 179s! [nft:179470]
+[11347.920106] watchdog: BUG: soft lockup - CPU#14 stuck for 205s! [nft:179470]
+[11375.920598] watchdog: BUG: soft lockup - CPU#14 stuck for 231s! [nft:179470]
+[11403.921090] watchdog: BUG: soft lockup - CPU#14 stuck for 257s! [nft:179470]
+[11431.921581] watchdog: BUG: soft lockup - CPU#14 stuck for 283s! [nft:179470]
+[11459.922072] watchdog: BUG: soft lockup - CPU#14 stuck for 309s! [nft:179470]
+[11487.922565] watchdog: BUG: soft lockup - CPU#14 stuck for 335s! [nft:179470]
+[11515.923057] watchdog: BUG: soft lockup - CPU#14 stuck for 362s! [nft:179470]
+[11543.923548] watchdog: BUG: soft lockup - CPU#14 stuck for 388s! [nft:179470]
+[11571.924041] watchdog: BUG: soft lockup - CPU#14 stuck for 414s! [nft:179470]
+[11599.924533] watchdog: BUG: soft lockup - CPU#14 stuck for 440s! [nft:179470]
+[11627.925024] watchdog: BUG: soft lockup - CPU#14 stuck for 466s! [nft:179470]
+[11655.925516] watchdog: BUG: soft lockup - CPU#14 stuck for 492s! [nft:179470]
+[11683.926008] watchdog: BUG: soft lockup - CPU#14 stuck for 518s! [nft:179470]
+[11711.926500] watchdog: BUG: soft lockup - CPU#14 stuck for 544s! [nft:179470]
+[11739.926993] watchdog: BUG: soft lockup - CPU#14 stuck for 570s! [nft:179470]
+[11807.928187] watchdog: BUG: soft lockup - CPU#18 stuck for 22s! [nft:199409]
+[11835.928679] watchdog: BUG: soft lockup - CPU#18 stuck for 49s! [nft:199409]
+[11847.552359] rcu: INFO: rcu_preempt self-detected stall on CPU
+[11847.553197] rcu: 	18-....: (5916 ticks this GP) idle=a60c/1/0x4000000000000000 softirq=84339/84341 fqs=2947
+[11871.929311] watchdog: BUG: soft lockup - CPU#18 stuck for 82s! [nft:199409]
+[11899.929804] watchdog: BUG: soft lockup - CPU#18 stuck for 108s! [nft:199409]
+[11927.930295] watchdog: BUG: soft lockup - CPU#18 stuck for 134s! [nft:199409]
+[11955.930787] watchdog: BUG: soft lockup - CPU#18 stuck for 160s! [nft:199409]
+[11983.931280] watchdog: BUG: soft lockup - CPU#18 stuck for 186s! [nft:199409]
+[12011.931771] watchdog: BUG: soft lockup - CPU#18 stuck for 212s! [nft:199409]
+[12024.585469] rcu: INFO: rcu_preempt self-detected stall on CPU
+[12024.586300] rcu: 	18-....: (23619 ticks this GP) idle=a60c/1/0x4000000000000000 softirq=84339/84341 fqs=11791
+[12051.932474] watchdog: BUG: soft lockup - CPU#18 stuck for 250s! [nft:199409]
+[12079.932966] watchdog: BUG: soft lockup - CPU#18 stuck for 276s! [nft:199409]
+[12107.933458] watchdog: BUG: soft lockup - CPU#18 stuck for 302s! [nft:199409]
+[12135.933950] watchdog: BUG: soft lockup - CPU#18 stuck for 328s! [nft:199409]
+[12163.934442] watchdog: BUG: soft lockup - CPU#18 stuck for 354s! [nft:199409]
+[12191.934934] watchdog: BUG: soft lockup - CPU#18 stuck for 380s! [nft:199409]
+[12201.618581] rcu: INFO: rcu_preempt self-detected stall on CPU
+[12201.619403] rcu: 	18-....: (41322 ticks this GP) idle=a60c/1/0x4000000000000000 softirq=84339/84341 fqs=20641
+[12227.935566] watchdog: BUG: soft lockup - CPU#18 stuck for 414s! [nft:199409]
+[12255.936058] watchdog: BUG: soft lockup - CPU#18 stuck for 440s! [nft:199409]
+[12283.936550] watchdog: BUG: soft lockup - CPU#18 stuck for 466s! [nft:199409]
+[12311.937042] watchdog: BUG: soft lockup - CPU#18 stuck for 492s! [nft:199409]
+[12339.937534] watchdog: BUG: soft lockup - CPU#18 stuck for 518s! [nft:199409]
+[12367.938026] watchdog: BUG: soft lockup - CPU#18 stuck for 544s! [nft:199409]
+[12378.651689] rcu: INFO: rcu_preempt self-detected stall on CPU
+[12378.652549] rcu: 	18-....: (59025 ticks this GP) idle=a60c/1/0x4000000000000000 softirq=84339/84341 fqs=29485
+[12403.938659] watchdog: BUG: soft lockup - CPU#18 stuck for 578s! [nft:199409]
+[12431.939150] watchdog: BUG: soft lockup - CPU#18 stuck for 604s! [nft:199409]
+[12459.939642] watchdog: BUG: soft lockup - CPU#18 stuck for 630s! [nft:199409]
+[12535.940978] watchdog: BUG: soft lockup - CPU#25 stuck for 27s! [nft:234664]
+[12563.941469] watchdog: BUG: soft lockup - CPU#25 stuck for 53s! [nft:234664]
+[12591.941960] watchdog: BUG: soft lockup - CPU#25 stuck for 79s! [nft:234664]
+[12619.942452] watchdog: BUG: soft lockup - CPU#25 stuck for 105s! [nft:234664]
+[12647.942944] watchdog: BUG: soft lockup - CPU#25 stuck for 131s! [nft:234664]
+[12675.943436] watchdog: BUG: soft lockup - CPU#25 stuck for 157s! [nft:234664]
+[12703.943927] watchdog: BUG: soft lockup - CPU#25 stuck for 183s! [nft:234664]
+[12731.944419] watchdog: BUG: soft lockup - CPU#25 stuck for 209s! [nft:234664]
+[12759.944910] watchdog: BUG: soft lockup - CPU#25 stuck for 235s! [nft:234664]
+[12787.945402] watchdog: BUG: soft lockup - CPU#25 stuck for 261s! [nft:234664]
+[12815.945894] watchdog: BUG: soft lockup - CPU#25 stuck for 287s! [nft:234664]
+[12843.946386] watchdog: BUG: soft lockup - CPU#25 stuck for 313s! [nft:234664]
+[12871.946877] watchdog: BUG: soft lockup - CPU#25 stuck for 339s! [nft:234664]
+[12899.947369] watchdog: BUG: soft lockup - CPU#25 stuck for 366s! [nft:234664]
+[12925.785012] systemd[1]: Failed to start Network Configuration.
+[12927.947861] watchdog: BUG: soft lockup - CPU#25 stuck for 392s! [nft:234664]
+[13011.939335] watchdog: BUG: soft lockup - CPU#13 stuck for 26s! [nft:255223]
+[13039.939828] watchdog: BUG: soft lockup - CPU#13 stuck for 52s! [nft:255223]
+[13067.940320] watchdog: BUG: soft lockup - CPU#13 stuck for 78s! [nft:255223]
+[13095.940811] watchdog: BUG: soft lockup - CPU#13 stuck for 104s! [nft:255223]
+[13115.694819] ena 0000:00:05.0 eth0: Lost TX completions are above the threshold (176 > 128). Completion transmission timeout: 5000 (msec). 49610 msecs since last interrupt, 49620 msecs since last napi execution.
+[13115.697636] ena 0000:00:05.0 eth0: Resetting the device
+[13115.698455] ena 0000:00:05.0 eth0: Trigger reset is on
+[13115.699156] ena 0000:00:05.0 eth0: total_resets: 2
+[13115.699761] ena 0000:00:05.0 eth0: reset_fail: 0
+[13115.700385] ena 0000:00:05.0 eth0: tx_timeout: 1
+[13115.700990] ena 0000:00:05.0 eth0: wd_expired: 0
+[13115.701619] ena 0000:00:05.0 eth0: admin_q_pause: 0
+[13115.702294] ena 0000:00:05.0 eth0: bad_tx_req_id: 0
+[13115.702945] ena 0000:00:05.0 eth0: bad_rx_req_id: 0
+[13115.703584] ena 0000:00:05.0 eth0: bad_rx_desc_num: 0
+[13115.704264] ena 0000:00:05.0 eth0: missing_intr: 0
+[13115.704932] ena 0000:00:05.0 eth0: suspected_poll_starvation: 2
+[13115.705705] ena 0000:00:05.0 eth0: missing_tx_cmpl: 0
+[13115.706387] ena 0000:00:05.0 eth0: rx_desc_malformed: 0
+[13115.707095] ena 0000:00:05.0 eth0: tx_desc_malformed: 0
+[13115.707806] ena 0000:00:05.0 eth0: invalid_state: 0
+[13115.708459] ena 0000:00:05.0 eth0: os_netdev_wd: 0
+[13115.709107] ena 0000:00:05.0 eth0: missing_admin_interrupt: 0
+[13115.709886] ena 0000:00:05.0 eth0: admin_to: 0
+[13115.710486] ena 0000:00:05.0 eth0: device_request_reset: 0
+[13115.711230] ena 0000:00:05.0 eth0: missing_first_intr: 0
+[13115.711947] ena 0000:00:05.0 eth0: suspend: 0
+[13115.712533] ena 0000:00:05.0 eth0: resume: 0
+[13115.713118] ena 0000:00:05.0 eth0: interface_down: 1
+[13115.713783] ena 0000:00:05.0 eth0: interface_up: 2
+[13115.714432] ena 0000:00:05.0 eth0: ena_admin_q_aborted_cmd: 0
+[13115.715219] ena 0000:00:05.0 eth0: ena_admin_q_submitted_cmd: 99
+[13115.716017] ena 0000:00:05.0 eth0: ena_admin_q_completed_cmd: 99
+[13115.716820] ena 0000:00:05.0 eth0: ena_admin_q_out_of_space: 0
+[13115.717613] ena 0000:00:05.0 eth0: ena_admin_q_no_completion: 0
+[13115.718418] ena 0000:00:05.0 eth0: total_tx_cnt: 581842
+[13115.719112] ena 0000:00:05.0 eth0: total_tx_bytes: 148040461
+[13115.719878] ena 0000:00:05.0 eth0: total_tx_queue_stop: 0
+[13115.720619] ena 0000:00:05.0 eth0: total_tx_queue_wakeup: 0
+[13115.721368] ena 0000:00:05.0 eth0: total_tx_dma_mapping_err: 0
+[13115.722145] ena 0000:00:05.0 eth0: total_tx_linearize: 0
+[13115.722853] ena 0000:00:05.0 eth0: total_tx_linearize_failed: 0
+[13115.723647] ena 0000:00:05.0 eth0: total_tx_napi_comp: 976553
+[13115.724428] ena 0000:00:05.0 eth0: total_tx_prepare_ctx_err: 0
+[13115.725223] ena 0000:00:05.0 eth0: total_tx_bad_req_id: 0
+[13115.725945] ena 0000:00:05.0 eth0: total_tx_llq_buffer_copy: 323181
+[13115.726793] ena 0000:00:05.0 eth0: total_tx_missed_tx: 176
+[13115.727530] ena 0000:00:05.0 eth0: total_tx_xsk_cnt: 0
+[13115.728228] ena 0000:00:05.0 eth0: total_tx_xsk_bytes: 0
+[13115.728946] ena 0000:00:05.0 eth0: total_tx_xsk_need_wakeup_set: 0
+[13115.729783] ena 0000:00:05.0 eth0: total_tx_xsk_wakeup_request: 0
+[13115.730605] ena 0000:00:05.0 eth0: total_tx_xdp_frags_exceeded: 0
+[13115.731435] ena 0000:00:05.0 eth0: total_tx_xdp_short_linear_part: 0
+[13115.732289] ena 0000:00:05.0 eth0: total_rx_cnt: 970506
+[13115.732997] ena 0000:00:05.0 eth0: total_rx_bytes: 1260279192
+[13115.733767] ena 0000:00:05.0 eth0: total_rx_rx_copybreak_pkt: 146291
+[13115.734641] ena 0000:00:05.0 eth0: total_rx_csum_good: 950606
+[13115.735404] ena 0000:00:05.0 eth0: total_rx_refil_partial: 0
+[13115.736172] ena 0000:00:05.0 eth0: total_rx_csum_bad: 0
+[13115.736872] ena 0000:00:05.0 eth0: total_rx_page_alloc_fail: 0
+[13115.737655] ena 0000:00:05.0 eth0: total_rx_skb_alloc_fail: 0
+[13115.738441] ena 0000:00:05.0 eth0: total_rx_dma_mapping_err: 0
+[13115.739226] ena 0000:00:05.0 eth0: total_rx_bad_desc_num: 0
+[13115.739977] ena 0000:00:05.0 eth0: total_rx_bad_req_id: 0
+[13115.740704] ena 0000:00:05.0 eth0: total_rx_empty_rx_ring: 0
+[13115.741477] ena 0000:00:05.0 eth0: total_rx_csum_unchecked: 19507
+[13115.742300] ena 0000:00:05.0 eth0: total_rx_xdp_aborted: 0
+[13115.743035] ena 0000:00:05.0 eth0: total_rx_xdp_drop: 0
+[13115.743740] ena 0000:00:05.0 eth0: total_rx_xdp_pass: 0
+[13115.744452] ena 0000:00:05.0 eth0: total_rx_xdp_tx: 0
+[13115.745136] ena 0000:00:05.0 eth0: total_rx_xdp_invalid: 0
+[13115.745861] ena 0000:00:05.0 eth0: total_rx_xdp_redirect: 0
+[13115.746616] ena 0000:00:05.0 eth0: total_rx_lpc_warm_up: 0
+[13115.747366] ena 0000:00:05.0 eth0: total_rx_lpc_full: 0
+[13115.748061] ena 0000:00:05.0 eth0: total_rx_lpc_wrong_numa: 0
+[13115.748839] ena 0000:00:05.0 eth0: total_rx_xsk_need_wakeup_set: 0
+[13115.749676] ena 0000:00:05.0 eth0: total_rx_zc_queue_pkt_copy: 0
+[13115.750481] ena 0000:00:05.0 eth0: queue_0_tx_tx_poll: 34921
+[13115.751261] ena 0000:00:05.0 eth0: queue_0_tx_doorbells: 9042
+[13115.752029] ena 0000:00:05.0 eth0: queue_0_tx_unmask_interrupt: 34920
+[13115.752905] ena 0000:00:05.0 eth0: queue_1_tx_tx_poll: 84234
+[13115.753666] ena 0000:00:05.0 eth0: queue_1_tx_doorbells: 110299
+[13115.754461] ena 0000:00:05.0 eth0: queue_1_tx_unmask_interrupt: 84234
+[13115.755346] ena 0000:00:05.0 eth0: queue_2_tx_tx_poll: 26104
+[13115.756096] ena 0000:00:05.0 eth0: queue_2_tx_doorbells: 28434
+[13115.756882] ena 0000:00:05.0 eth0: queue_2_tx_unmask_interrupt: 26104
+[13115.757761] ena 0000:00:05.0 eth0: queue_3_tx_tx_poll: 9816
+[13115.758506] ena 0000:00:05.0 eth0: queue_3_tx_doorbells: 14742
+[13115.759295] ena 0000:00:05.0 eth0: queue_3_tx_unmask_interrupt: 9816
+[13115.760152] ena 0000:00:05.0 eth0: queue_4_tx_tx_poll: 35634
+[13115.760918] ena 0000:00:05.0 eth0: queue_4_tx_doorbells: 26154
+[13115.761704] ena 0000:00:05.0 eth0: queue_4_tx_unmask_interrupt: 35634
+[13115.762581] ena 0000:00:05.0 eth0: queue_5_tx_tx_poll: 353507
+[13115.763353] ena 0000:00:05.0 eth0: queue_5_tx_doorbells: 13310
+[13115.764148] ena 0000:00:05.0 eth0: queue_5_tx_unmask_interrupt: 353506
+[13115.765033] ena 0000:00:05.0 eth0: queue_6_tx_tx_poll: 392650
+[13115.765800] ena 0000:00:05.0 eth0: queue_6_tx_doorbells: 352051
+[13115.766604] ena 0000:00:05.0 eth0: queue_6_tx_unmask_interrupt: 392650
+[13115.767480] ena 0000:00:05.0 eth0: queue_7_tx_tx_poll: 39690
+[13115.768243] ena 0000:00:05.0 eth0: queue_7_tx_doorbells: 19578
+[13115.769040] ena 0000:00:05.0 eth0: queue_7_tx_unmask_interrupt: 39689
+[13123.941303] watchdog: BUG: soft lockup - CPU#13 stuck for 130s! [nft:255223]
+[13125.074797] rcu: INFO: rcu_preempt self-detected stall on CPU
+[13125.075616] rcu: 	13-....: (5904 ticks this GP) idle=ad54/1/0x4000000000000000 softirq=101706/101709 fqs=2946
+[13151.941794] watchdog: BUG: soft lockup - CPU#13 stuck for 156s! [nft:255223]
+[13179.942286] watchdog: BUG: soft lockup - CPU#13 stuck for 182s! [nft:255223]
+[13207.942778] watchdog: BUG: soft lockup - CPU#13 stuck for 208s! [nft:255223]
+[13235.943269] watchdog: BUG: soft lockup - CPU#13 stuck for 234s! [nft:255223]
+[13263.943762] watchdog: BUG: soft lockup - CPU#13 stuck for 261s! [nft:255223]
+[13291.944253] watchdog: BUG: soft lockup - CPU#13 stuck for 287s! [nft:255223]
+[13302.107906] rcu: INFO: rcu_preempt self-detected stall on CPU
+[13302.108759] rcu: 	13-....: (23607 ticks this GP) idle=ad54/1/0x4000000000000000 softirq=101706/101709 fqs=11790
+[13327.944885] watchdog: BUG: soft lockup - CPU#13 stuck for 320s! [nft:255223]
+[13355.945377] watchdog: BUG: soft lockup - CPU#13 stuck for 346s! [nft:255223]
+[13383.945869] watchdog: BUG: soft lockup - CPU#13 stuck for 372s! [nft:255223]
+[13411.946360] watchdog: BUG: soft lockup - CPU#13 stuck for 398s! [nft:255223]
+[13429.625692] ena 0000:00:05.0: Device reset completed, status: 0, Driver info: Elastic Network Adapter (ENA) v2.14.1g
+[13429.625692] 
+[13487.957694] watchdog: BUG: soft lockup - CPU#22 stuck for 22s! [nft:257620]
+[13515.958185] watchdog: BUG: soft lockup - CPU#22 stuck for 48s! [nft:257620]
+[13543.958677] watchdog: BUG: soft lockup - CPU#22 stuck for 74s! [nft:257620]
+[13571.959170] watchdog: BUG: soft lockup - CPU#22 stuck for 100s! [nft:257620]
+[13599.959660] watchdog: BUG: soft lockup - CPU#22 stuck for 126s! [nft:257620]
+[13627.960153] watchdog: BUG: soft lockup - CPU#22 stuck for 153s! [nft:257620]
+[13655.960645] watchdog: BUG: soft lockup - CPU#22 stuck for 179s! [nft:257620]
+[13683.961136] watchdog: BUG: soft lockup - CPU#22 stuck for 205s! [nft:257620]
+[13711.961628] watchdog: BUG: soft lockup - CPU#22 stuck for 231s! [nft:257620]
+[13739.962119] watchdog: BUG: soft lockup - CPU#22 stuck for 257s! [nft:257620]
+[13767.962613] watchdog: BUG: soft lockup - CPU#22 stuck for 283s! [nft:257620]
+[13781.550050] systemd[1]: Failed to start Journal Service.
+[13795.963103] watchdog: BUG: soft lockup - CPU#22 stuck for 309s! [nft:257620]
+[13823.963595] watchdog: BUG: soft lockup - CPU#22 stuck for 335s! [nft:257620]
+[13851.964087] watchdog: BUG: soft lockup - CPU#22 stuck for 361s! [nft:257620]
+[13879.964579] watchdog: BUG: soft lockup - CPU#22 stuck for 387s! [nft:257620]
+[13907.965070] watchdog: BUG: soft lockup - CPU#22 stuck for 413s! [nft:257620]
+[13912.802344] systemd[1]: Failed to start Journal Service.
+[13935.965562] watchdog: BUG: soft lockup - CPU#22 stuck for 439s! [nft:257620]
+[13963.966055] watchdog: BUG: soft lockup - CPU#22 stuck for 465s! [nft:257620]
+[13991.966546] watchdog: BUG: soft lockup - CPU#22 stuck for 492s! [nft:257620]
+[14019.967037] watchdog: BUG: soft lockup - CPU#22 stuck for 518s! [nft:257620]
+[14044.054680] systemd[1]: Failed to start Journal Service.
+[14047.967529] watchdog: BUG: soft lockup - CPU#22 stuck for 544s! [nft:257620]
+[14075.968020] watchdog: BUG: soft lockup - CPU#22 stuck for 570s! [nft:257620]
+[14103.968513] watchdog: BUG: soft lockup - CPU#22 stuck for 596s! [nft:257620]
+[14131.969005] watchdog: BUG: soft lockup - CPU#22 stuck for 622s! [nft:257620]
+[14146.741777] systemd[1]: Failed to start Journal Service.
+[14203.970269] watchdog: BUG: soft lockup - CPU#25 stuck for 22s! [nft:263984]
+[14231.970761] watchdog: BUG: soft lockup - CPU#25 stuck for 48s! [nft:263984]
+[14259.971252] watchdog: BUG: soft lockup - CPU#25 stuck for 74s! [nft:263984]
+[14287.971744] watchdog: BUG: soft lockup - CPU#25 stuck for 100s! [nft:263984]
+[14315.972236] watchdog: BUG: soft lockup - CPU#25 stuck for 126s! [nft:263984]
+[14343.972728] watchdog: BUG: soft lockup - CPU#25 stuck for 152s! [nft:263984]
+[14371.973219] watchdog: BUG: soft lockup - CPU#25 stuck for 178s! [nft:263984]
+[14399.973711] watchdog: BUG: soft lockup - CPU#25 stuck for 205s! [nft:263984]
+[14427.974203] watchdog: BUG: soft lockup - CPU#25 stuck for 231s! [nft:263984]
+[14455.974694] watchdog: BUG: soft lockup - CPU#25 stuck for 257s! [nft:263984]
+[14483.975186] watchdog: BUG: soft lockup - CPU#25 stuck for 283s! [nft:263984]
