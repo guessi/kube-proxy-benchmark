@@ -4,14 +4,22 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-echo "Deleting services with name pattern nginx-service-*..."
-kubectl --namespace=debug delete services -l '!kubernetes.io/service-name' --ignore-not-found=true || \
-kubectl --namespace=debug get services --no-headers | grep "nginx-service-" | awk '{print $1}' | xargs -r kubectl --namespace=debug delete service
+UNATTENDED_FLAGS="--ignore-not-found --interactive=false"
 
-echo "Deleting deployment..."
-kubectl --namespace=debug delete deployment nginx-deployment --ignore-not-found=true
+echo "* Deleting services with name pattern nginx-service-*..."
+kubectl -n debug get services --no-headers | \
+  awk '/nginx-service-/{print$1}' | \
+  sort -r | \
+  xargs -r -n 100 \
+    kubectl -n debug delete service ${UNATTENDED_FLAGS}
+echo
 
-echo "Deleting namespace..."
-kubectl delete namespace debug --ignore-not-found=true
+echo "* Deleting deployment..."
+kubectl -n debug delete deployment nginx-deployment ${UNATTENDED_FLAGS}
+echo
 
-echo "Cleanup completed!"
+echo "* Deleting namespace..."
+kubectl delete namespace debug ${UNATTENDED_FLAGS}
+echo
+
+echo "* Cleanup completed!"

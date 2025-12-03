@@ -23,7 +23,7 @@ kubectl patch deployment nginx-deployment -n debug -p '{"spec":{"template":{"spe
 
 # Check existing services to determine starting point
 echo "Checking existing services..."
-EXISTING_SERVICES=$(kubectl get services -n debug --no-headers 2>/dev/null | grep "nginx-service-" | wc -l | tr -d '\n' || echo "0")
+EXISTING_SERVICES=$(kubectl get services -n debug --no-headers 2>/dev/null | grep -c "nginx-service-" | tr -d '\n' || echo "0")
 CURRENT_COUNT=$EXISTING_SERVICES
 echo "Found $CURRENT_COUNT existing services"
 
