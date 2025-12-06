@@ -51,8 +51,9 @@ This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule
 1. **Service Creation**: Create `8,000 services` incrementally (100 to 5,000)
 2. **Service Configuration**: Each service targets the same nginx deployment
 3. **Stabilization**: Wait `300 seconds` for service processing to complete
-4. **Trigger Event**: Scale deployment from `10` to `50` replicas incrementally (10 seconds between each step)
-5. **Measurement**: Measure kube-proxy `nftables` rule synchronization time
+4. **Scaling Up Slowly**: Scale deployment from `10` to `50` replicas incrementally (10 seconds between each step)
+5. **Trigger Event**: Randomly and slowly kill pods to trigger kube-proxy rules update
+6. **Measurement**: Measure kube-proxy `nftables` rule synchronization time
 
 ## Quick Start
 
@@ -68,10 +69,14 @@ This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule
 - Deploys nginx with `10` replicas (initial state)
 - Creates `5,000` services incrementally
 
-### Step 2: Increase Load (Trigger Performance Test)
+### Step 2: Increase Load and run test (Trigger Performance Test)
 
 ```bash
 ./scripts/increase-loading.sh
+```
+
+```bash
+./scripts/run-test.sh
 ```
 
 **What this script does:**
