@@ -23,7 +23,7 @@ Before running this benchmark, ensure you have:
 Create the benchmark cluster with two nodes running different kernel versions:
 
 ```bash
-eksctl create cluster -f cluster/clusterConfig.yaml
+./scripts/createCluster.sh
 ```
 
 This creates:
