@@ -11,12 +11,21 @@ kubectl create namespace debug \
   --dry-run=client -o yaml | kubectl apply -f -
 
 # Create deployment
-kubectl --namespace=debug create deployment nginx-deployment \
-  --image=nginx:stable-alpine \
-  --port=80 \
-  --replicas=10 \
-  --dry-run=client -o yaml | \
-  kubectl apply --force-conflicts --server-side -f -
+set +o errexit
+kubectl --namespace=debug get deployment --no-headers | grep "nginx-deployment"
+DEPLOYMENT_EXIST=$?
+set -o errexit
+
+if [[ ${DEPLOYMENT_EXIST} -ne 0 ]]; then
+  kubectl --namespace=debug create deployment nginx-deployment \
+    --image=nginx:stable-alpine \
+    --port=80 \
+    --replicas=10 \
+    --dry-run=client -o yaml | \
+    kubectl apply --force-conflicts --server-side -f -
+else
+  echo "deployment.apps/nginx-deployment existed"
+fi
 
 # Patch deployment to disable service links
 kubectl patch deployment nginx-deployment -n debug -p '{"spec":{"template":{"spec":{"enableServiceLinks":false}}}}'
