@@ -41,6 +41,22 @@ nodeGroups:
       - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
     maxPodsPerNode: 500 # Tested, m6i.8xlarge should be able to hold 500 pods per node
 
+  # - name: kernel-6-12-m6i-8xlarge-al2023
+  #   amiFamily: AmazonLinux2023
+  #   # amazon-eks-node-al2023-x86_64-standard-1.33-v20251120 (Kernel 6.12.55-74.119.amzn2023)
+  #   ami: ami-0edd2b60bc3608c96
+  #   desiredCapacity: 1
+  #   instanceType: m6i.8xlarge
+  #   volumeSize: 100
+  #   volumeType: gp3
+  #   privateNetworking: true
+  #   iam:
+  #     attachPolicyARNs:
+  #     - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly
+  #     - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+  #     - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+  #     - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
 addons:
   - name: kube-proxy
     configurationValues: '{"mode": "nftables"}'
