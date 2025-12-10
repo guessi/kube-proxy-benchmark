@@ -8,6 +8,10 @@ This repository benchmarks kube-proxy performance in `nftables` mode across diff
 
 **Test Result**: Kernel `6.12.55` shows **77% faster** performance compared to `6.1.144` in this benchmark.
 
+> For `soft lockup` issue discussion and reproduction, please move to the links below:
+> * https://github.com/kubernetes/kubernetes/issues/135639
+> * https://github.com/guessi/k8s-issue-135639
+
 ## Prerequisites
 
 Before running this benchmark, ensure you have:
