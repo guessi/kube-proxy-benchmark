@@ -48,7 +48,7 @@ kubectl get pods -n kube-system
 
 This benchmark creates a high-load scenario to test kube-proxy's `nftables` rule synchronization:
 
-1. **Service Creation**: Create `8,000 services` incrementally (100 to 5,000)
+1. **Service Creation**: Create `5,000 services` incrementally (100 to 5,000)
 2. **Service Configuration**: Each service targets the same nginx deployment
 3. **Stabilization**: Wait `300 seconds` for service processing to complete
 4. **Scaling Up Slowly**: Scale deployment from `10` to `50` replicas incrementally (10 seconds between each step)
