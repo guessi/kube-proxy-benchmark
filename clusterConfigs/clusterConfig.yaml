@@ -22,6 +22,7 @@ nodeGroups:
       - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
       - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
       - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+    maxPodsPerNode: 500 # Tested, m6i.8xlarge should be able to hold 500 pods per node
 
   - name: kernel-6-12-m6i-8xlarge
     amiFamily: Bottlerocket
@@ -38,6 +39,7 @@ nodeGroups:
       - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
       - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
       - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+    maxPodsPerNode: 500 # Tested, m6i.8xlarge should be able to hold 500 pods per node
 
 addons:
   - name: kube-proxy
